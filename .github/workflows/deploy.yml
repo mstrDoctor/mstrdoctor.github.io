@@ -1,38 +1,18 @@
-name: Deploy Site to GitHub Pages
+name: Deploy Modix to GitHub Pages
 
 on:
   push:
     branches:
-      - master # Если используешь другую ветку, замените на её имя
-  pull_request:
-    branches:
-      - master  # Если используешь другую ветку, замените на её имя
+      - master  # Когда пуш в мастер
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'  # Укажи версию Python, которую ты используешь
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Build the site
-      run: |
-        # Здесь будет твой скрипт для сборки и деплоя, например:
-        python your_build_script.py  # Замените на команду для сборки сайта
-
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.1.0
-      with:
-        branch: gh-pages
-        folder: site  # Укажи папку с твоим скомпилированным сайтом
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site  # Тут указываем папку 'site'
