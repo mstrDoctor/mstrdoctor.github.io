@@ -10,12 +10,12 @@ window.addEventListener("load", () => {
     updateLikeState(fileId);
 });
 
-// === Функция получения fileId из URL ===
 function getFileIdFromURL() {
     const url = window.location.pathname;
     const fileId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
-    return fileId || '';
+    return (fileId || '').toLowerCase();  // <<< добавляем .toLowerCase()
 }
+
 
 // === Инициализация поля имени ===
 function initializeNameField(fileId) {
