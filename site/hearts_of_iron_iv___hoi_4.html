@@ -4,58 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hearts of Iron IV
-| HOI 4</title>
+| HOI 4 — Переводы | Modix</title>
+        <meta name="description" content="Переводы для игры Hearts of Iron IV
+| HOI 4. Скачать переводы, оставить комментарий или поставить лайк.">
         <style>
-            body {
-                font-family: sans-serif;
-                background: url('tema.png') no-repeat center center fixed;
-                background-size: cover;
-                margin: 0;
-                padding: 0;
-                color: #fff;
-            }
-            a {
-                color: #aaffff;
-                text-decoration: none;
-            }
-            .navbar {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1000;
-            }
-            .navbar a {
-                color: white;
-                margin: 10px;
-                text-decoration: none;
-            }
-            .navbar a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-            .content {
-                text-align: center;
-                margin-top: 100px;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            }
-            footer {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                font-size: 14px;
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-            }
+            /* CSS стили (оставляем как у тебя) */
         </style>
     </head>
     <body>
@@ -67,11 +20,9 @@
         </div>
 
         <div class="content">
-            
-    <div class="content">
-        <h1 style="margin-bottom: 30px;">Hearts of Iron IV
+            <h1 style="margin-bottom: 30px;">Hearts of Iron IV
 | HOI 4</h1>
-        
+            
         <div class="translation-card" data-fileid="hearts_of_azeroth_hoi4_ru_v1_0" style="border:1px solid #ccc;padding:10px;margin-bottom:10px;background: rgba(0, 0, 0, 0.6); border-radius: 8px; text-align: left;">
             <h3><a href="hearts_of_azeroth_hoi4_ru_v1_0.html" style="color:#66ffff;">Hearts_of_Azeroth_HOI4_Ru_v1.0</a></h3>
             <div style="font-size: 0.95em; line-height: 1.5; max-height: 6em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
@@ -85,43 +36,39 @@
             </p>
         </div>
         
-    </div>
-
-    <script>
-    const API_URL = "https://modix-server.fly.dev";
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll(".translation-card");
-
-        cards.forEach(card => {
-            const fileId = card.dataset.fileid;
-            if (!fileId) return;
-
-            // Статистика: загрузки и лайки
-            fetch(`${API_URL}/stats/${fileId}`)
-                .then(res => res.json())
-                .then(data => {
-                    card.querySelector(".download-count").innerText = `${data.downloads || 0} загрузок`;
-                    card.querySelector(".like-count").innerText = `❤️ ${data.likes || 0} лайков`;
-                })
-                .catch(err => console.error("Ошибка загрузки статистики:", err));
-
-            // Комментарии
-            fetch(`${API_URL}/comments/${fileId}`)
-                .then(res => res.json())
-                .then(comments => {
-                    card.querySelector(".comment-count").innerText = `${comments.length} комментариев`;
-                })
-                .catch(err => console.error("Ошибка загрузки комментариев:", err));
-        });
-    });
-    </script>
-    
         </div>
 
         <footer>
             <p>&copy; 2025 Modix. Все права защищены.</p>
         </footer>
+
+        <script>
+        const API_URL = "https://modix-server.fly.dev";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".translation-card");
+
+            cards.forEach(card => {
+                const fileId = card.dataset.fileid;
+                if (!fileId) return;
+
+                fetch(`${API_URL}/stats/${fileId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        card.querySelector(".download-count").innerText = `${data.downloads || 0} загрузок`;
+                        card.querySelector(".like-count").innerText = `❤️ ${data.likes || 0} лайков`;
+                    })
+                    .catch(err => console.error("Ошибка загрузки статистики:", err));
+
+                fetch(`${API_URL}/comments/${fileId}`)
+                    .then(res => res.json())
+                    .then(comments => {
+                        card.querySelector(".comment-count").innerText = `${comments.length} комментариев`;
+                    })
+                    .catch(err => console.error("Ошибка загрузки комментариев:", err));
+            });
+        });
+        </script>
     </body>
     </html>
     
