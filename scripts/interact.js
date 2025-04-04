@@ -11,14 +11,14 @@ window.addEventListener("load", () => {
     updateStats(fileId);
 });
 
-// === Получение fileId из URL ===
+// === Получение fileId из URL
 function getFileIdFromURL() {
     const url = window.location.pathname;
     const fileId = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
     return (fileId || '').toLowerCase();
 }
 
-// === Инициализация имени ===
+// === Инициализация имени
 function initializeNameField(fileId) {
     const nameField = document.getElementById("name-" + fileId);
     if (!nameField) return;
