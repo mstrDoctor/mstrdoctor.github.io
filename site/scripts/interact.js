@@ -1,3 +1,5 @@
+const API_URL = "https://modix-server.onrender.com"; // ← добавили базовый адрес
+
 // === Основная инициализация ===
 window.addEventListener("load", () => {
     const fileId = getFileIdFromURL();
@@ -69,23 +71,44 @@ function toggleSubmitButton(fileId) {
     }
 }
 
+// === Отправка комментария
+function addComment(fileId, nameFieldId, textFieldId) {
+    const name = document.getElementById(nameFieldId)?.value.trim();
+    const text = document.getElementById(textFieldId)?.value.trim();
+    if (!name || !text) return alert("Введите имя и комментарий");
+
+    fetch(`${API_URL}/comments/${fileId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, text })
+    })
+    .then(response => response.json())
+    .then(() => {
+        alert("Комментарий отправлен! ✅");
+        renderComments(fileId);
+        document.getElementById(textFieldId).value = "";
+        toggleSubmitButton(fileId);
+    })
+    .catch(err => alert("Ошибка при отправке комментария: " + err));
+}
+
 // === Отображение комментариев
 function renderComments(fileId) {
     const container = document.getElementById("comments-" + fileId);
     if (!container) return;
 
-    fetch("data/comments.json")
+    fetch(`${API_URL}/comments/${fileId}`)
         .then(res => res.json())
         .then(data => {
-            const comments = data[fileId] || [];
+            const list = data || [];
             container.innerHTML = "";
-            comments.forEach(c => {
+            list.forEach(c => {
                 const el = document.createElement("div");
                 el.style = "border:1px solid #ccc;padding:8px;margin:5px 0;background:#f9f9f9;color:#000;border-radius:6px;";
                 el.innerHTML = `<strong>${c.name}</strong><br><span>${c.text}</span>`;
                 container.appendChild(el);
             });
-            updateCommentCount(fileId, comments.length);
+            updateCommentCount(fileId, list.length);
         })
         .catch(err => console.error("Ошибка при загрузке комментариев:", err));
 }
@@ -97,12 +120,11 @@ function updateCommentCount(fileId, count) {
 
 // === Статистика: лайки и загрузки
 function updateStats(fileId) {
-    fetch("data/stats.json")
+    fetch(`${API_URL}/stats/${fileId}`)
         .then(res => res.json())
         .then(data => {
-            const stats = data[fileId] || { downloads: 0, likes: 0 };
-            updateDownloadCount(fileId, stats.downloads);
-            updateLikeCount(fileId, stats.likes);
+            updateDownloadCount(fileId, data.downloads || 0);
+            updateLikeCount(fileId, data.likes || 0);
         })
         .catch(err => console.error("Ошибка при загрузке статистики:", err));
 }
@@ -117,13 +139,32 @@ function updateLikeCount(fileId, count) {
     if (el) el.innerText = `❤️ ${count} лайков`;
 }
 
-// === Заглушка для лайков
+// === Лайк (реальный)
 function likeFile(fileId) {
-    alert("На статичном сайте лайкнуть нельзя. Попробуй локально 😅");
+    if (localStorage.getItem("liked_" + fileId)) {
+        alert("Вы уже поставили лайк ранее ✅");
+        return;
+    }
+
+    fetch(`${API_URL}/like/${fileId}`, { method: "POST" })
+        .then(res => res.json())
+        .then(data => {
+            alert("Спасибо за лайк! ❤️");
+            updateLikeCount(fileId, data.likes);
+            localStorage.setItem("liked_" + fileId, "true");
+        })
+        .catch(err => alert("Ошибка при лайке: " + err));
 }
 
-// === Загрузка файла (без сервера)
+// === Загрузка файла
 function downloadFile(fileId, fileUrl) {
     window.open(fileUrl, '_blank');
-    // Только локально можно обновить статистику
+
+    fetch(`${API_URL}/files/${fileId}`, { method: 'GET' })
+        .then(() => {
+            setTimeout(() => {
+                updateStats(fileId);
+            }, 500);
+        })
+        .catch(err => console.error("Ошибка при обновлении количества загрузок: " + err));
 }
