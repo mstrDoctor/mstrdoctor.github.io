@@ -1,4 +1,4 @@
-const API_URL = "https://modix-server.onrender.com";  // Теперь всё правильно!
+const API_URL = "https://modix-server.fly.dev";
 
 // === Основная инициализация ===
 window.addEventListener("load", () => {
