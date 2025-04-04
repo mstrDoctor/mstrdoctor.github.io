@@ -101,91 +101,9 @@
         <div id="comment-count-hearts_of_azeroth_hoi4_ru_v1_0">Комментарии: 0</div>
 
         <script src="scripts/interact.js"></script>
-        <script>
-            const API_URL = "https://modix-server.fly.dev";
-
-            function getNameFromLocalStorage() {
-                return localStorage.getItem('username') || '';
-            }
-
-            const nameField = document.getElementById("name-hearts_of_azeroth_hoi4_ru_v1_0");
-            const savedName = getNameFromLocalStorage();
-            if (nameField) {
-                nameField.value = savedName;
-                nameField.addEventListener("input", (event) => {
-                    localStorage.setItem("username", event.target.value);
-                    toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
-                });
-            }
-
-            function toggleSubmitButton(fileId) {
-                const name = document.getElementById("name-" + fileId).value.trim();
-                const text = document.getElementById("text-" + fileId).value.trim();
-                const submitButton = document.getElementById("submit-button-" + fileId);
-                submitButton.disabled = !(name && text);
-            }
-
-            document.getElementById("text-hearts_of_azeroth_hoi4_ru_v1_0")?.addEventListener("input", () => {
-                toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
-            });
-
-            function addComment(fileId, nameFieldId, textFieldId) {
-                const name = document.getElementById(nameFieldId).value.trim();
-                const text = document.getElementById(textFieldId).value.trim();
-                if (!name || !text) {
-                    alert("Введите имя и комментарий");
-                    return;
-                }
-                fetch(`${API_URL}/comments/${fileId}`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, text })
-                })
-                .then(response => response.json())
-                .then(() => {
-                    alert("Комментарий отправлен! ✅");
-                    renderComments(fileId);
-                    document.getElementById(textFieldId).value = "";
-                    toggleSubmitButton(fileId);
-                })
-                .catch(err => alert("Ошибка при отправке комментария: " + err));
-            }
-
-            function renderComments(fileId) {
-                fetch(`${API_URL}/comments/${fileId}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        const comments = data || [];
-                        const container = document.getElementById("comments-" + fileId);
-                        if (container) {
-                            container.innerHTML = "";
-                            comments.forEach(c => {
-                                const el = document.createElement("div");
-                                el.style = "border:1px solid #ccc;padding:8px;margin:5px 0;background:#f9f9f9;color:#000;border-radius:6px;";
-                                el.innerHTML = `<strong>${c.name}</strong><br><span>${c.text}</span>`;
-                                container.appendChild(el);
-                            });
-                            document.getElementById("comment-count-" + fileId).innerText = `Комментарии: ${comments.length}`;
-                        }
-                    })
-                    .catch(err => console.error("Ошибка при загрузке комментариев:", err));
-            }
-
-            function likeFile(fileId) {
-                alert("На статичном сайте лайк поставить невозможно.");
-            }
-
-            function downloadFile(fileId, fileUrl) {
-                window.open(fileUrl, '_blank');
-            }
-
-            toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
-            renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
-        </script>
 
         <p style="margin-top: 30px;">
-            <a href='hearts_of_iron_iv
-__hoi_4.html' style="color:#aaffff;">← Назад к игре</a>
+            <a href='hearts_of_iron_iv___hoi_4.html' style="color:#aaffff;">← Назад к игре</a>
         </p>
     </div>
     
