@@ -102,6 +102,8 @@
 
         <script src="scripts/interact.js"></script>
         <script>
+            const API_URL = "https://modix-server.fly.dev";
+
             function getNameFromLocalStorage() {
                 return localStorage.getItem('username') || '';
             }
@@ -127,33 +129,33 @@
                 toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
             });
 
-            function likeFile(fileId) {
-                if (localStorage.getItem("liked_" + fileId)) {
-                    alert("Вы уже поставили лайк этому файлу");
+            function addComment(fileId, nameFieldId, textFieldId) {
+                const name = document.getElementById(nameFieldId).value.trim();
+                const text = document.getElementById(textFieldId).value.trim();
+                if (!name || !text) {
+                    alert("Введите имя и комментарий");
                     return;
                 }
-                alert("На статичном сайте лайк поставить невозможно.");
+                fetch(`${API_URL}/comments/${fileId}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, text })
+                })
+                .then(response => response.json())
+                .then(() => {
+                    alert("Комментарий отправлен! ✅");
+                    renderComments(fileId);
+                    document.getElementById(textFieldId).value = "";
+                    toggleSubmitButton(fileId);
+                })
+                .catch(err => alert("Ошибка при отправке комментария: " + err));
             }
-
-            function handleDownload(fileId) {
-                setTimeout(() => {
-                    fetch("data/stats.json")
-                    .then(res => res.json())
-                    .then(data => {
-                        const downloads = data[fileId]?.downloads || 0;
-                        document.getElementById("download-count-" + fileId).innerText = `(${downloads} загрузок)`;
-                    });
-                }, 1000);
-            }
-
-            toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
-            renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
 
             function renderComments(fileId) {
-                fetch('data/comments.json')
+                fetch(`${API_URL}/comments/${fileId}`)
                     .then(res => res.json())
                     .then(data => {
-                        const comments = data[fileId] || [];
+                        const comments = data || [];
                         const container = document.getElementById("comments-" + fileId);
                         if (container) {
                             container.innerHTML = "";
@@ -168,6 +170,17 @@
                     })
                     .catch(err => console.error("Ошибка при загрузке комментариев:", err));
             }
+
+            function likeFile(fileId) {
+                alert("На статичном сайте лайк поставить невозможно.");
+            }
+
+            function downloadFile(fileId, fileUrl) {
+                window.open(fileUrl, '_blank');
+            }
+
+            toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
+            renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
         </script>
 
         <p style="margin-top: 30px;">
