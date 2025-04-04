@@ -78,27 +78,27 @@
         </div>
 
         <div style="display: flex; align-items: center; gap: 20px; margin-top: 20px;">
-            <button onclick="downloadFile('Hearts_of_Azeroth_HOI4_Ru_v1_0', 'https://mega.co.nz/#!7I5FiBKA!sHlWs6Fe3QymxNYCQlNufM32T-Rg_4hgH-700X0rrV4')" 
+            <button onclick="downloadFile('hearts_of_azeroth_hoi4_ru_v1_0', 'https://mega.co.nz/#!7I5FiBKA!sHlWs6Fe3QymxNYCQlNufM32T-Rg_4hgH-700X0rrV4')" 
                 style="color:#00ffff;font-weight:bold; background: none; border: none; cursor: pointer;">
                 ⬇ Скачать файл
             </button>
-            <span id="download-count-Hearts_of_Azeroth_HOI4_Ru_v1_0" style="margin-left: 10px;">(0 загрузок)</span>
+            <span id="download-count-hearts_of_azeroth_hoi4_ru_v1_0" style="margin-left: 10px;">(0 загрузок)</span>
 
-            <button onclick="likeFile('Hearts_of_Azeroth_HOI4_Ru_v1_0')" id="like-button-Hearts_of_Azeroth_HOI4_Ru_v1_0" style="padding: 5px 10px; border: none; border-radius: 5px; background: #222; color: #fff; cursor: pointer;">
+            <button onclick="likeFile('hearts_of_azeroth_hoi4_ru_v1_0')" id="like-button-hearts_of_azeroth_hoi4_ru_v1_0" style="padding: 5px 10px; border: none; border-radius: 5px; background: #222; color: #fff; cursor: pointer;">
                 ❤️ Лайк
             </button>
-            <span id="like-count-Hearts_of_Azeroth_HOI4_Ru_v1_0">0 лайков</span>
+            <span id="like-count-hearts_of_azeroth_hoi4_ru_v1_0">0 лайков</span>
         </div>
 
         <hr style="margin: 20px 0;">
 
         <h2 style="margin-bottom:10px;">Оставить комментарий</h2>
-        <input id="name-Hearts_of_Azeroth_HOI4_Ru_v1_0" placeholder="Имя" style="width:200px; padding:5px;" value=""><br>
-        <textarea id="text-Hearts_of_Azeroth_HOI4_Ru_v1_0" placeholder="Комментарий" style="width:400px;height:80px; margin-top:10px; padding:5px;"></textarea><br>
-        <button id="submit-button-Hearts_of_Azeroth_HOI4_Ru_v1_0" onclick="addComment('Hearts_of_Azeroth_HOI4_Ru_v1_0', 'name-Hearts_of_Azeroth_HOI4_Ru_v1_0', 'text-Hearts_of_Azeroth_HOI4_Ru_v1_0')" style="margin-top:10px;" disabled>Отправить</button>
+        <input id="name-hearts_of_azeroth_hoi4_ru_v1_0" placeholder="Имя" style="width:200px; padding:5px;" value=""><br>
+        <textarea id="text-hearts_of_azeroth_hoi4_ru_v1_0" placeholder="Комментарий" style="width:400px;height:80px; margin-top:10px; padding:5px;"></textarea><br>
+        <button id="submit-button-hearts_of_azeroth_hoi4_ru_v1_0" onclick="addComment('hearts_of_azeroth_hoi4_ru_v1_0', 'name-hearts_of_azeroth_hoi4_ru_v1_0', 'text-hearts_of_azeroth_hoi4_ru_v1_0')" style="margin-top:10px;" disabled>Отправить</button>
 
-        <div id="comments-Hearts_of_Azeroth_HOI4_Ru_v1_0" class="comments" style="margin-top:20px;"></div>
-        <div id="comment-count-Hearts_of_Azeroth_HOI4_Ru_v1_0">Комментарии: 0</div>
+        <div id="comments-hearts_of_azeroth_hoi4_ru_v1_0" class="comments" style="margin-top:20px;"></div>
+        <div id="comment-count-hearts_of_azeroth_hoi4_ru_v1_0">Комментарии: 0</div>
 
         <script src="scripts/interact.js"></script>
         <script>
@@ -106,13 +106,13 @@
                 return localStorage.getItem('username') || '';
             }
 
-            const nameField = document.getElementById("name-Hearts_of_Azeroth_HOI4_Ru_v1_0");
+            const nameField = document.getElementById("name-hearts_of_azeroth_hoi4_ru_v1_0");
             const savedName = getNameFromLocalStorage();
             if (nameField) {
                 nameField.value = savedName;
                 nameField.addEventListener("input", (event) => {
                     localStorage.setItem("username", event.target.value);
-                    toggleSubmitButton("Hearts_of_Azeroth_HOI4_Ru_v1_0");
+                    toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
                 });
             }
 
@@ -123,8 +123,8 @@
                 submitButton.disabled = !(name && text);
             }
 
-            document.getElementById("text-Hearts_of_Azeroth_HOI4_Ru_v1_0")?.addEventListener("input", () => {
-                toggleSubmitButton("Hearts_of_Azeroth_HOI4_Ru_v1_0");
+            document.getElementById("text-hearts_of_azeroth_hoi4_ru_v1_0")?.addEventListener("input", () => {
+                toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
             });
 
             function likeFile(fileId) {
@@ -153,8 +153,8 @@
                 }, 1000);
             }
 
-            toggleSubmitButton("Hearts_of_Azeroth_HOI4_Ru_v1_0");
-            renderComments("Hearts_of_Azeroth_HOI4_Ru_v1_0");
+            toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
+            renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
         </script>
 
         <p style="margin-top: 30px;">

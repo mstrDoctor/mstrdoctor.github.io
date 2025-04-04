@@ -3,7 +3,7 @@ name: Deploy Modix to GitHub Pages
 on:
   push:
     branches:
-      - master  # Когда пуш в мастер
+      - master
 
 jobs:
   deploy:
@@ -11,8 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Rename all files to lowercase
+        run: |
+          find site -depth | while read SRC; do
+            DST=$(dirname "$SRC")/$(basename "$SRC" | tr '[:upper:]' '[:lower:]')
+            if [ "$SRC" != "$DST" ]; then
+              mv "$SRC" "$DST"
+            fi
+          done
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site  # Тут указываем папку 'site'
+          publish_dir: ./site
