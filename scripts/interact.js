@@ -1,15 +1,38 @@
-const API_URL = "https://modix-server.onrender.com";  // Теперь всё правильно!
+const API_URL = "https://modix-server.fly.dev";
 
 // === Основная инициализация ===
 window.addEventListener("load", () => {
     const fileId = getFileIdFromURL();
     console.log("File ID после загрузки страницы:", fileId);
+
+    // 📈 ДОБАВЬ ЭТО:
+    registerVisit(fileId);
+
     initializeNameField(fileId);
     setupNameFieldListeners(fileId);
     toggleSubmitButton(fileId);
     renderComments(fileId);
     updateStats(fileId);
 });
+
+// === Отправка информации о визите (новая функция)
+function registerVisit(fileId) {
+    fetch(`${API_URL}/visit`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ file_id: fileId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Посещение зарегистрировано:", data);
+    })
+    .catch(error => {
+        console.error("Ошибка при регистрации посещения:", error);
+    });
+}
+
 
 // === Получение fileId из URL
 function getFileIdFromURL() {
