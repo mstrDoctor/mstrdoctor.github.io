@@ -11,13 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Copy only JSON files from data
-        run: |
-          mkdir -p site/data
-          cp data/*.json site/data/
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          keep_files: true   # <-- тут ВАЖНО!
+          force_orphan: false # <-- и тут!
