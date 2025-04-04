@@ -79,9 +79,9 @@
 Мод переносит события культовой вселенной Warcraft в механику HoI4 — и теперь всё это доступно на р...
             </div>
             <p style="margin-top:10px;">
-                ⬇️ <span id="downloads-Hearts_of_Azeroth_HOI4_Ru_v1_0">0</span> загрузок — 
-                ❤️ <span id="likes-Hearts_of_Azeroth_HOI4_Ru_v1_0">0</span> лайков — 
-                💬 <span id="comments-Hearts_of_Azeroth_HOI4_Ru_v1_0">0</span> комментариев
+                ⬇️ <span id="downloads-hearts_of_azeroth_hoi4_ru_v1_0">0</span> загрузок — 
+                ❤️ <span id="likes-hearts_of_azeroth_hoi4_ru_v1_0">0</span> лайков — 
+                💬 <span id="comments-hearts_of_azeroth_hoi4_ru_v1_0">0</span> комментариев
             </p>
         </div>
         
@@ -89,25 +89,28 @@
 
     <script>
     window.addEventListener("load", () => {
-        const blocks = document.querySelectorAll("h3 a");
-        blocks.forEach(link => {
-            const fileId = link.getAttribute("href").replace(".html", "");
+        fetch('data/stats.json')
+            .then(res => res.json())
+            .then(stats => {
+                document.querySelectorAll("h3 a").forEach(link => {
+                    const fileId = link.getAttribute("href").replace(".html", "").toLowerCase();
+                    const fileStats = stats[fileId] || { downloads: 0, likes: 0 };
+                    document.getElementById("downloads-" + fileId).innerText = fileStats.downloads;
+                    document.getElementById("likes-" + fileId).innerText = fileStats.likes;
+                });
+            })
+            .catch(err => console.error("Ошибка загрузки stats:", err));
 
-            fetch(`/stats/${fileId}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById("downloads-" + fileId).innerText = data.downloads;
-                    document.getElementById("likes-" + fileId).innerText = data.likes;
-                })
-                .catch(err => console.error("Ошибка загрузки stats:", err));
-
-            fetch(`/comments/${fileId}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById("comments-" + fileId).innerText = data.length;
-                })
-                .catch(err => console.error("Ошибка загрузки comments:", err));
-        });
+        fetch('data/comments.json')
+            .then(res => res.json())
+            .then(comments => {
+                document.querySelectorAll("h3 a").forEach(link => {
+                    const fileId = link.getAttribute("href").replace(".html", "").toLowerCase();
+                    const fileComments = comments[fileId] || [];
+                    document.getElementById("comments-" + fileId).innerText = fileComments.length;
+                });
+            })
+            .catch(err => console.error("Ошибка загрузки comments:", err));
     });
     </script>
     

@@ -132,29 +132,42 @@
                     alert("Вы уже поставили лайк этому файлу");
                     return;
                 }
-                fetch(`/like/${fileId}`, {
-                    method: "POST"
-                })
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById("like-count-" + fileId).innerText = data.likes + " лайков";
-                    localStorage.setItem("liked_" + fileId, "true");
-                })
-                .catch(err => alert("Ошибка при лайке: " + err));
+                alert("На статичном сайте лайк поставить невозможно.");
             }
 
             function handleDownload(fileId) {
                 setTimeout(() => {
-                    fetch(`/stats/${fileId}`)
+                    fetch("data/stats.json")
                     .then(res => res.json())
                     .then(data => {
-                        document.getElementById("download-count-" + fileId).innerText = `(${data.downloads} загрузок)`;
+                        const downloads = data[fileId]?.downloads || 0;
+                        document.getElementById("download-count-" + fileId).innerText = `(${downloads} загрузок)`;
                     });
                 }, 1000);
             }
 
             toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
             renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
+
+            function renderComments(fileId) {
+                fetch('data/comments.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        const comments = data[fileId] || [];
+                        const container = document.getElementById("comments-" + fileId);
+                        if (container) {
+                            container.innerHTML = "";
+                            comments.forEach(c => {
+                                const el = document.createElement("div");
+                                el.style = "border:1px solid #ccc;padding:8px;margin:5px 0;background:#f9f9f9;color:#000;border-radius:6px;";
+                                el.innerHTML = `<strong>${c.name}</strong><br><span>${c.text}</span>`;
+                                container.appendChild(el);
+                            });
+                            document.getElementById("comment-count-" + fileId).innerText = `Комментарии: ${comments.length}`;
+                        }
+                    })
+                    .catch(err => console.error("Ошибка при загрузке комментариев:", err));
+            }
         </script>
 
         <p style="margin-top: 30px;">
