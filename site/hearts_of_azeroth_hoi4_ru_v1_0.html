@@ -1,0 +1,173 @@
+
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hearts_of_Azeroth_HOI4_Ru_v1.0</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                background: url('tema.png') no-repeat center center fixed;
+                background-size: cover;
+                margin: 0;
+                padding: 0;
+                color: #fff;
+            }
+            a {
+                color: #aaffff;
+                text-decoration: none;
+            }
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+            }
+            .navbar a {
+                color: white;
+                margin: 10px;
+                text-decoration: none;
+            }
+            .navbar a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+            .content {
+                text-align: center;
+                margin-top: 100px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            }
+            footer {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 10px;
+                text-align: center;
+                font-size: 14px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="index.html">Главная</a>
+            <a href="games.html">Игры</a>
+            <a href="about.html">О проекте</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+
+        <div class="content">
+            
+    <div class="content" style="text-align: left; font-size: 1em; line-height: 1.6;">
+        <h1 style="text-align: center;">Hearts_of_Azeroth_HOI4_Ru_v1.0</h1>
+        <p><strong>Игра:</strong> <span style="font-weight: 600;">Hearts of Iron IV
+| HOI 4</span></p>
+
+        <div style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+            Полный перевод глобального мода Hearts of Azeroth (A Warcraft Total Overhaul) для Hearts of Iron IV.<br>Мод переносит события культовой вселенной Warcraft в механику HoI4 — и теперь всё это доступно на русском языке!<br>🔸 Машинный перевод с постобработкой — охвачено ~99% оригинальных файлов.<br>🔸 Возможны редкие артефакты или непереведённые символы, но в целом всё читабельно.<br>🔸 Актуально и проверено на версии HoI4 1.16.2, несмотря на то, что сам мод сделан под 1.15.x.
+            
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px; margin-top: 20px;">
+            <button onclick="downloadFile('hearts_of_azeroth_hoi4_ru_v1_0', 'https://mega.co.nz/#!7I5FiBKA!sHlWs6Fe3QymxNYCQlNufM32T-Rg_4hgH-700X0rrV4')" 
+                style="color:#00ffff;font-weight:bold; background: none; border: none; cursor: pointer;">
+                ⬇ Скачать файл
+            </button>
+            <span id="download-count-hearts_of_azeroth_hoi4_ru_v1_0" style="margin-left: 10px;">(0 загрузок)</span>
+
+            <button onclick="likeFile('hearts_of_azeroth_hoi4_ru_v1_0')" id="like-button-hearts_of_azeroth_hoi4_ru_v1_0" style="padding: 5px 10px; border: none; border-radius: 5px; background: #222; color: #fff; cursor: pointer;">
+                ❤️ Лайк
+            </button>
+            <span id="like-count-hearts_of_azeroth_hoi4_ru_v1_0">0 лайков</span>
+        </div>
+
+        <hr style="margin: 20px 0;">
+
+        <h2 style="margin-bottom:10px;">Оставить комментарий</h2>
+        <input id="name-hearts_of_azeroth_hoi4_ru_v1_0" placeholder="Имя" style="width:200px; padding:5px;" value=""><br>
+        <textarea id="text-hearts_of_azeroth_hoi4_ru_v1_0" placeholder="Комментарий" style="width:400px;height:80px; margin-top:10px; padding:5px;"></textarea><br>
+        <button id="submit-button-hearts_of_azeroth_hoi4_ru_v1_0" onclick="addComment('hearts_of_azeroth_hoi4_ru_v1_0', 'name-hearts_of_azeroth_hoi4_ru_v1_0', 'text-hearts_of_azeroth_hoi4_ru_v1_0')" style="margin-top:10px;" disabled>Отправить</button>
+
+        <div id="comments-hearts_of_azeroth_hoi4_ru_v1_0" class="comments" style="margin-top:20px;"></div>
+        <div id="comment-count-hearts_of_azeroth_hoi4_ru_v1_0">Комментарии: 0</div>
+
+        <script src="scripts/interact.js"></script>
+        <script>
+            function getNameFromLocalStorage() {
+                return localStorage.getItem('username') || '';
+            }
+
+            const nameField = document.getElementById("name-hearts_of_azeroth_hoi4_ru_v1_0");
+            const savedName = getNameFromLocalStorage();
+            if (nameField) {
+                nameField.value = savedName;
+                nameField.addEventListener("input", (event) => {
+                    localStorage.setItem("username", event.target.value);
+                    toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
+                });
+            }
+
+            function toggleSubmitButton(fileId) {
+                const name = document.getElementById("name-" + fileId).value.trim();
+                const text = document.getElementById("text-" + fileId).value.trim();
+                const submitButton = document.getElementById("submit-button-" + fileId);
+                submitButton.disabled = !(name && text);
+            }
+
+            document.getElementById("text-hearts_of_azeroth_hoi4_ru_v1_0")?.addEventListener("input", () => {
+                toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
+            });
+
+            function likeFile(fileId) {
+                if (localStorage.getItem("liked_" + fileId)) {
+                    alert("Вы уже поставили лайк этому файлу");
+                    return;
+                }
+                fetch(`/like/${fileId}`, {
+                    method: "POST"
+                })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("like-count-" + fileId).innerText = data.likes + " лайков";
+                    localStorage.setItem("liked_" + fileId, "true");
+                })
+                .catch(err => alert("Ошибка при лайке: " + err));
+            }
+
+            function handleDownload(fileId) {
+                setTimeout(() => {
+                    fetch(`/stats/${fileId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById("download-count-" + fileId).innerText = `(${data.downloads} загрузок)`;
+                    });
+                }, 1000);
+            }
+
+            toggleSubmitButton("hearts_of_azeroth_hoi4_ru_v1_0");
+            renderComments("hearts_of_azeroth_hoi4_ru_v1_0");
+        </script>
+
+        <p style="margin-top: 30px;">
+            <a href='Hearts_of_Iron_IV
+__HOI_4.html' style="color:#aaffff;">← Назад к игре</a>
+        </p>
+    </div>
+    
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Modix. Все права защищены.</p>
+        </footer>
+    </body>
+    </html>
+    
