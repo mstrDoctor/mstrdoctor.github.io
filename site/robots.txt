@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mstrdoctor.github.io/Modix/sitemap.xml

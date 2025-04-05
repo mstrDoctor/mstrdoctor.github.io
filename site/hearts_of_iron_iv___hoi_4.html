@@ -1,0 +1,151 @@
+
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hearts of Iron IV
+| HOI 4 — Переводы | Modix</title>
+        <meta name="description" content="Переводы для игры Hearts of Iron IV
+| HOI 4. Скачать переводы, оставить комментарий или поставить лайк.">
+        <link rel="icon" href="icons/logo.png" type="image/png">
+        <style>
+            body {
+                font-family: 'Segoe UI', sans-serif;
+                background: url('tema.png') no-repeat center center fixed;
+                background-size: cover;
+                margin: 0;
+                padding: 0;
+                color: #fff;
+            }
+            a {
+                color: #66ffff;
+                text-decoration: none;
+            }
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+            }
+            .navbar a {
+                color: white;
+                margin: 10px;
+                text-decoration: none;
+                padding: 6px 12px;
+                border-radius: 5px;
+                transition: 0.3s;
+            }
+            .navbar a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                color: #00ffff;
+            }
+            .content {
+                text-align: center;
+                margin-top: 120px;
+                padding: 30px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1.1em;
+                line-height: 1.7;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+                animation: fadeIn 0.7s ease;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 25px;
+                font-size: 2em;
+            }
+            .translation-card {
+                transition: transform 0.3s;
+            }
+            .translation-card:hover {
+                transform: scale(1.05);
+            }
+            footer {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 10px;
+                text-align: center;
+                font-size: 14px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="index.html">Главная</a>
+            <a href="games.html">Игры</a>
+            <a href="about.html">О проекте</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+
+        <div class="content">
+            <h1>Hearts of Iron IV
+| HOI 4</h1>
+            
+        <div class="translation-card" data-fileid="hearts_of_azeroth_hoi4_ru_v1_0" style="border:1px solid #ccc;padding:10px;margin-bottom:10px;background: rgba(0, 0, 0, 0.6); border-radius: 8px; text-align: left; transition: transform 0.3s;">
+            <h3><a href="hearts_of_azeroth_hoi4_ru_v1_0.html" style="color:#66ffff; text-decoration: none; font-size: 1.2em;">Hearts_of_Azeroth_HOI4_Ru_v1.0</a></h3>
+            <div style="font-size: 0.95em; line-height: 1.5; max-height: 6em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                Полный перевод глобального мода Hearts of Azeroth (A Warcraft Total Overhaul) для Hearts of Iron IV.
+Мод переносит события культовой вселенной Warcraft в механику HoI4 — и теперь всё это доступно на р...
+            </div>
+            <p style="margin-top:10px; font-weight: bold; color: #aaa;">
+                ⬇️ <span class="download-count">0 загрузок</span> — 
+                ❤️ <span class="like-count">0 лайков</span> — 
+                💬 <span class="comment-count">0 комментариев</span>
+            </p>
+        </div>
+        
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Modix. Все права защищены.</p>
+        </footer>
+
+        <script>
+        const API_URL = "https://modix-server.fly.dev";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".translation-card");
+
+            cards.forEach(card => {
+                const fileId = card.dataset.fileid;
+                if (!fileId) return;
+
+                fetch(`${API_URL}/stats/${fileId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        card.querySelector(".download-count").innerText = `${data.downloads || 0} загрузок`;
+                        card.querySelector(".like-count").innerText = `❤️ ${data.likes || 0} лайков`;
+                    })
+                    .catch(err => console.error("Ошибка загрузки статистики:", err));
+
+                fetch(`${API_URL}/comments/${fileId}`)
+                    .then(res => res.json())
+                    .then(comments => {
+                        card.querySelector(".comment-count").innerText = `${comments.length} комментариев`;
+                    })
+                    .catch(err => console.error("Ошибка загрузки комментариев:", err));
+            });
+        });
+        </script>
+    </body>
+    </html>
+    
