@@ -3,21 +3,19 @@ name: Deploy Modix to GitHub Pages
 on:
   push:
     branches:
-      - main  # <-- триггер при пуше в main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site  # <-- Публикуем содержимое папки site
-          publish_branch: main # <-- Публикуем прямо в ветку main
-          destination_dir: .   # <-- В корень репозитория (ОЧЕНЬ ВАЖНО!)
+          publish_dir: ./site
+          publish_branch: gh-pages  # <--- добавь эту строку !!!
           keep_files: true
           force_orphan: false
