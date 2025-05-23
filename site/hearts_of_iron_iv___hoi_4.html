@@ -1,77 +1,63 @@
-
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Переводы для игры Hearts of Iron IV
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Переводы для игры Hearts of Iron IV
 | HOI 4: скачать, отзывы, лайки.">
-        <meta name="yandex-verification" content="70562a0e4bbf977e" />
-        <title>Hearts of Iron IV
+    <title>Hearts of Iron IV
 | HOI 4 — Переводы | RaidLynx</title>
-        <link rel="icon" href="icons/favicon.webp" type="image/webp">
-        <style>
-            body {
-                font-family: sans-serif;
-                background: url('tema.png') no-repeat center center fixed;
-                background-size: cover;
-                margin: 0;
-                padding: 0;
-                color: #fff;
-            }
-            a {
-                color: #aaffff;
-                text-decoration: none;
-            }
-            .navbar {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1000;
-            }
-            .navbar a {
-                color: white;
-                margin: 10px;
-                text-decoration: none;
-            }
-            .navbar a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-            .content {
-                text-align: center;
-                margin-top: 100px;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            }
-            footer {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                font-size: 14px;
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="navbar">
-            <a href="index.html">Главная</a>
-            <a href="games.html">Игры</a>
-            <a href="about.html">О проекте</a>
-            <a href="contacts.html">Контакты</a>
-        </div>
+    <link rel="icon" href="icons/favicon.webp" type="image/webp">
 
-        <div class="content">
-            
+    <!-- ✨ СТИЛИ ✨ -->
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;color:#fff;font-family:'Segoe UI',sans-serif;
+             background:url('tema.png') no-repeat center/cover fixed}
+        a{color:inherit;text-decoration:none}
+
+        /* ───────── ВЕРХНИЙ NAVBAR ───────── */
+        .navbar-top{
+            position:fixed;top:0;left:0;width:100%;z-index:1000;
+            padding:14px 24px;display:flex;justify-content:center;gap:26px;
+            background:linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+            backdrop-filter:blur(6px);box-shadow:0 4px 10px rgba(0,0,0,.5)
+        }
+        .navbar-top a{padding:8px 14px;border-radius:6px;font-weight:600;
+                       color:#ffffffd9;transition:background .25s,transform .25s}
+        .navbar-top a:hover{background:rgba(255,255,255,.18);transform:scale(1.06);color:#fff}
+        .navbar-top a.active{background:#00bcd4;color:#000}
+
+        /* ───────── ОСНОВНОЙ КОНТЕНТ ───────── */
+        .content{
+            margin:100px auto 80px;          /* снизу стало меньше — нет нижнего navbar */
+            max-width:880px;padding:28px 24px;border-radius:12px;text-align:center;
+            background:rgba(0,0,0,.68);box-shadow:0 4px 12px rgba(0,0,0,.55)
+        }
+
+        /* ───────── FOOTER ───────── */
+        footer{margin:40px 0 20px;text-align:center;font-size:14px;opacity:.85}
+        footer small{display:block;margin-top:4px;font-size:13px;color:#ccc}
+
+        /* ───────── АДАПТИВ ───────── */
+        @media(max-width:768px){
+            .navbar-top{flex-wrap:wrap;gap:12px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНИЙ NAVBAR -->
+    <nav class="navbar-top">
+        <a href="index.html"    id="link-index">Главная</a>
+        <a href="games.html"    id="link-games">Игры</a>
+        <a href="about.html"    id="link-about">О&nbsp;проекте</a>
+        <a href="contacts.html" id="link-contacts">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        
         
     <style>
         .game-title{
@@ -122,6 +108,82 @@
         .tr-desc{font-size:.9rem;line-height:1.5;flex:1;color:#ddd}
         .tr-stats{margin-top:1.2rem;font-size:.9rem;color:#aaa;font-weight:600}
     </style>
+    
+        
+    <style>
+      .rlx-widget{
+          position:fixed;
+          right:0;
+          top:50%;
+          transform:translateY(-50%);
+          width:320px;
+          max-width:90vw;
+          padding:24px 20px 28px;
+          border-radius:18px;
+          background:#1b1b1f;
+          box-shadow:0 6px 30px rgba(0,0,0,.35);
+          z-index:1000;
+      }
+      .rlx-title{
+          display:flex;
+          align-items:center;
+          gap:12px;
+          margin-bottom:16px;
+      }
+      .rlx-title img{
+          width:48px;
+          height:48px;
+          border-radius:50%;
+          object-fit:cover;  /* круг без искажения */
+      }
+      .rlx-title span{
+          font-weight:700;
+          font-size:1.1rem;
+          color:#fff;
+      }
+      .rlx-desc{
+          font-size:.88rem;
+          line-height:1.4;
+          margin-bottom:20px;
+          color:#bbb;
+      }
+      .rlx-join{
+          display:block;
+          text-align:center;
+          font-weight:600;
+          font-size:1rem;
+          background:#2a6be6;
+          color:#fff;
+          padding:12px 0;
+          border-radius:10px;
+          text-decoration:none;
+          transition:.2s;
+          box-shadow:0 3px 6px rgba(42,107,230,.4);
+      }
+      .rlx-join:hover{filter:brightness(1.1);}
+      @media(max-width:768px){
+          .rlx-widget{display:none;}
+      }
+    </style>
+
+    <aside class="rlx-widget">
+      <div class="rlx-title">
+        <!-- локальная анимированная аватарка 120×120 -->
+        <img src="icons/raidlynx.webp" alt="RaidLynx logo">
+        <span>RaidLynx&nbsp;чат</span>
+      </div>
+
+      <p class="rlx-desc">
+        Обсуждаем переводы, моддинг, делимся новостями.<br>
+        Вступайте к нам!
+      </p>
+
+      <a class="rlx-join"
+         href="https://t.me/RaidLynx"
+         target="_blank" rel="noopener">
+        ВСТУПИТЬ В TELEGRAM
+      </a>
+    </aside>
     
         <h1 class='game-title'>Hearts of Iron IV
 | HOI 4</h1>
@@ -180,11 +242,24 @@
     </script>
     
     
-        </div>
+    </div>
 
-        <footer>
-            <p>&copy; 2025 RaidLynx. Все права защищены.</p>
-        </footer>
-    </body>
-    </html>
-    
+    <!-- FOOTER -->
+    <footer>
+        🦊 RaidLynx. Все права защищены.
+        <small>Лучшие русификации — специально для вас!</small>
+    </footer>
+
+    <!-- ───────── СКРИПТ ───────── -->
+    <script>
+      /* Подсветка активной вкладки */
+      (() => {
+          const page = (location.pathname.split('/').pop() || 'index.html')
+                       .replace('.html','');
+          const link = document.getElementById('link-' + page);
+          if (link) link.classList.add('active');
+      })();
+    </script>
+
+</body>
+</html>
