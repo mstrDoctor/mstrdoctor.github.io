@@ -3,12 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Контактная информация RaidLynx: пишите нам или заходите в соцсети.">
+        <meta name="yandex-verification" content="70562a0e4bbf977e" />
         <title>Контакты — RaidLynx</title>
-        <meta name="description" content="Контактная информация проекта RaidLynx. Напишите нам или свяжитесь через социальные сети.">
         <link rel="icon" href="icons/favicon.webp" type="image/webp">
         <style>
             body {
-                font-family: 'Segoe UI', sans-serif;
+                font-family: sans-serif;
                 background: url('tema.png') no-repeat center center fixed;
                 background-size: cover;
                 margin: 0;
@@ -16,7 +17,7 @@
                 color: #fff;
             }
             a {
-                color: #66ffff;
+                color: #aaffff;
                 text-decoration: none;
             }
             .navbar {
@@ -32,25 +33,21 @@
                 color: white;
                 margin: 10px;
                 text-decoration: none;
-                padding: 6px 12px;
-                border-radius: 5px;
-                transition: 0.3s;
             }
             .navbar a:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-                color: #00ffff;
+                background-color: #ddd;
+                color: black;
             }
             .content {
                 text-align: center;
-                margin-top: 120px;
-                padding: 30px;
-                max-width: 900px;
+                margin-top: 100px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                max-width: 800px;
                 margin-left: auto;
                 margin-right: auto;
-                background: rgba(0,0,0,0.7);
-                border-radius: 12px;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-                animation: fadeIn 0.7s ease;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             }
             footer {
                 background-color: rgba(0, 0, 0, 0.7);
@@ -60,14 +57,6 @@
                 position: fixed;
                 width: 100%;
                 bottom: 0;
-            }
-            h1 {
-                font-size: 2em;
-                margin-bottom: 20px;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
             }
         </style>
     </head>
@@ -80,47 +69,60 @@
         </div>
 
         <div class="content">
-            <h1>Контакты</h1>
-            <p style="font-size: 1.1em; line-height: 1.6;">Здесь вы найдёте ссылки на наши внешние ресурсы.<br><br>Если у вас есть предложения, идеи, вопросы или пожелания — пишите нам через удобную для вас платформу. Мы открыты к диалогу и всегда рады вашей обратной связи.<br><br>Спасибо, что поддерживаете проект RaidLynx!</p>
+            
+        
+    <style>
+        .contacts-title{
+            text-align:center;font-size:2.8rem;font-weight:800;margin-bottom:2rem;
+            background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);
+            -webkit-background-clip:text;color:transparent}
+        .contacts-desc{max-width:700px;margin:0 auto 3rem;font-size:1.05rem;
+            line-height:1.6;text-align:center;color:#ddd}
+        .links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+            gap:32px;max-width:900px;margin:0 auto}
+        .link-card{display:flex;flex-direction:column;align-items:center;
+            background:rgba(255,255,255,.05);backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:32px 24px;
+            transition:transform .25s,box-shadow .25s}
+        .link-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+        .link-card img{width:60px;height:60px;margin-bottom:14px;transition:transform .25s}
+        .link-card:hover img{transform:scale(1.15)}
+        .link-card p{margin:0;color:#eee;font-size:.95rem;text-align:center}
+    </style>
+    
+        <h1 class="contacts-title">Контакты</h1>
+        <p class="contacts-desc">Здесь вы найдёте ссылки на наши внешние ресурсы.<br><br>Если у вас есть предложения, идеи, вопросы или пожелания — пишите нам через удобную для вас платформу. Мы открыты к диалогу и всегда рады вашей обратной связи.<br><br>Спасибо, что поддерживаете проект RaidLynx!</p>
 
-            <h2 style="margin-top: 40px; margin-bottom: 20px;">Наши ссылки:</h2>
-            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                
-        <div style="display: flex; flex-direction: column; align-items: center; margin: 15px; width: 200px;">
-            <a href="https://t.me/RaidLynx" target="_blank" style="text-decoration: none;">
-                <img src="icons/telegram.png" alt="Наш телеграм.
+        <div class="links-grid">
+            
+        <a href="https://t.me/RaidLynx" class="link-card" target="_blank">
+            <img src="icons/telegram.png" alt="Наш телеграм.
 
 Основная ссылка для связи с нами. 
 Пишите свои предложения, следите за новостями.
-Пишите свои комментарии по улучшениям." width="48" height="48" style="margin-bottom: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <div style="color: white; font-size: 0.95em; line-height: 1.5; text-align: center; white-space: pre-line; margin-top: 5px;">
-                Наш телеграм.
+Пишите свои комментарии по улучшениям." />
+            <p>Наш телеграм.
 
 Основная ссылка для связи с нами. 
 Пишите свои предложения, следите за новостями.
-Пишите свои комментарии по улучшениям.
-            </div>
-        </div>
+Пишите свои комментарии по улучшениям.</p>
+        </a>
         
-        <div style="display: flex; flex-direction: column; align-items: center; margin: 15px; width: 200px;">
-            <a href="https://www.youtube.com/@mstrDoctor" target="_blank" style="text-decoration: none;">
-                <img src="icons/youtube.png" alt="Наш ютуб.
+        <a href="https://www.youtube.com/@mstrDoctor" class="link-card" target="_blank">
+            <img src="icons/youtube.png" alt="Наш ютуб.
 
 Здесь я выкладываю свою музыку.
 Буду рад вашей поддержке — подписке, лайку и комментарию.
-Спасибо, что слушаете!" width="48" height="48" style="margin-bottom: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <div style="color: white; font-size: 0.95em; line-height: 1.5; text-align: center; white-space: pre-line; margin-top: 5px;">
-                Наш ютуб.
+Спасибо, что слушаете!" />
+            <p>Наш ютуб.
 
 Здесь я выкладываю свою музыку.
 Буду рад вашей поддержке — подписке, лайку и комментарию.
-Спасибо, что слушаете!
-            </div>
-        </div>
+Спасибо, что слушаете!</p>
+        </a>
         
-            </div>
+        </div>
+    
         </div>
 
         <footer>

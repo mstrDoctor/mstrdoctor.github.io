@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Выберите игру, чтобы скачать лучший русификатор. Переводы для самых популярных игр.">
+        <meta name="yandex-verification" content="70562a0e4bbf977e" />
         <title>Список игр — Русификаторы RaidLynx</title>
-        <meta name="description" content="Выберите игру, чтобы скачать лучший русификатор. Доступны переводы для самых популярных игр.">
         <link rel="icon" href="icons/favicon.webp" type="image/webp">
         <style>
             body {
@@ -48,18 +49,6 @@
                 margin-right: auto;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             }
-            h1 {
-                font-size: 2em;
-                margin-bottom: 20px;
-            }
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-            ul li {
-                margin: 10px 0;
-                font-size: 1.2em;
-            }
             footer {
                 background-color: rgba(0, 0, 0, 0.7);
                 padding: 10px;
@@ -72,7 +61,6 @@
         </style>
     </head>
     <body>
-        <!-- Navbar -->
         <div class="navbar">
             <a href="index.html">Главная</a>
             <a href="games.html">Игры</a>
@@ -81,10 +69,42 @@
         </div>
 
         <div class="content">
-            <h1>Список игр</h1>
-            <ul><li><a href="hearts_of_iron_iv___hoi_4.html">Hearts of Iron IV
-| HOI 4</a></li>
-            </ul>
+            
+        
+    <style>
+        .games-title{text-align:center;font-size:2.8rem;font-weight:800;margin-bottom:2.5rem;background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);-webkit-background-clip:text;color:transparent}
+        .games-search{max-width:440px;margin:0 auto 3rem;display:flex}
+        .games-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
+        .games-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+        .games-search button:hover{background:#009cff}
+        .games-container{max-width:1000px;margin:0 auto;padding:0 32px 64px;display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+        .game-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:40px 24px;text-align:center;overflow:hidden;transition:transform .25s,box-shadow .25s}
+        .game-card h3{margin:0;font-size:1.2rem;font-weight:700;color:#fff}
+        .game-card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);opacity:0;transition:opacity .25s}
+        .game-card:hover::before{opacity:.35}
+        .game-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+        .game-card a{position:relative;z-index:1;text-decoration:none;color:inherit;display:block;height:100%}
+    </style>
+    
+        <h1 class='games-title'>Список игр</h1>
+        <div class='games-search'>
+            <input id='gameSearch' type='text' placeholder='Поиск игры...' onkeyup='filterGames()'>
+            <button onclick='filterGames()'>🔍</button>
+        </div>
+        <div id='gamesContainer' class='games-container'>
+            <div class='game-card'><a href='hearts_of_iron_iv___hoi_4.html'><h3>Hearts of Iron IV
+| HOI 4</h3></a></div>
+        </div>
+
+        <script>
+        function filterGames() {
+            const q = document.getElementById('gameSearch').value.toLowerCase();
+            document.querySelectorAll('#gamesContainer .game-card').forEach(c => {
+                c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
+            });
+        }
+        </script>
+    
         </div>
 
         <footer>
