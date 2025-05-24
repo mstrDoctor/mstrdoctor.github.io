@@ -78,64 +78,55 @@
     
         
     <style>
+      /* ───── БАЗОВЫЙ ВИДЖЕТ ───── */
       .rlx-widget{
-          position:fixed;
-          right:0;
-          top:50%;
-          transform:translateY(-50%);
-          width:320px;
-          max-width:90vw;
-          padding:24px 20px 28px;
-          border-radius:18px;
-          background:#1b1b1f;
-          box-shadow:0 6px 30px rgba(0,0,0,.35);
-          z-index:1000;
+          position:fixed;right:0;top:50%;transform:translateY(-50%);
+          width:320px;max-width:90vw;padding:24px 20px 28px;
+          border-radius:18px;background:#1b1b1f;
+          box-shadow:0 6px 30px rgba(0,0,0,.35);z-index:1000;
+          transition:width .35s ease, padding .35s ease;
       }
-      .rlx-title{
-          display:flex;
-          align-items:center;
-          gap:12px;
-          margin-bottom:16px;
+      /* состояние “свернут” */
+      .rlx-widget.collapsed{
+          width:56px;padding:12px 8px;overflow:hidden;
       }
-      .rlx-title img{
-          width:48px;
-          height:48px;
-          border-radius:50%;
-          object-fit:cover;  /* круг без искажения */
+
+      /* ───── ЗАГОЛОВОК ───── */
+      .rlx-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+      .rlx-title img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+      .rlx-title span{font-weight:700;font-size:1.1rem;color:#fff}
+      .rlx-widget.collapsed .rlx-title span{display:none}
+
+      /* ───── ТЕКСТ и КНОПКА ───── */
+      .rlx-desc{font-size:.88rem;line-height:1.4;margin-bottom:20px;color:#bbb}
+      .rlx-widget.collapsed .rlx-desc,
+      .rlx-widget.collapsed .rlx-join{display:none}
+
+      .rlx-join{display:block;text-align:center;font-weight:600;font-size:1rem;
+                background:#2a6be6;color:#fff;padding:12px 0;border-radius:10px;
+                text-decoration:none;transition:.2s;
+                box-shadow:0 3px 6px rgba(42,107,230,.4)}
+      .rlx-join:hover{filter:brightness(1.1)}
+
+      /* ───── КНОПКА-СТРЕЛКА ───── */
+      .rlx-toggle{
+          position:absolute;top:6px;right:6px;width:28px;height:28px;
+          background:#2a6be6;border:none;border-radius:50%;cursor:pointer;
+          display:flex;align-items:center;justify-content:center;
+          padding:0;transition:transform .35s;color:#fff;
       }
-      .rlx-title span{
-          font-weight:700;
-          font-size:1.1rem;
-          color:#fff;
-      }
-      .rlx-desc{
-          font-size:.88rem;
-          line-height:1.4;
-          margin-bottom:20px;
-          color:#bbb;
-      }
-      .rlx-join{
-          display:block;
-          text-align:center;
-          font-weight:600;
-          font-size:1rem;
-          background:#2a6be6;
-          color:#fff;
-          padding:12px 0;
-          border-radius:10px;
-          text-decoration:none;
-          transition:.2s;
-          box-shadow:0 3px 6px rgba(42,107,230,.4);
-      }
-      .rlx-join:hover{filter:brightness(1.1);}
-      @media(max-width:768px){
-          .rlx-widget{display:none;}
-      }
+      .rlx-toggle svg{width:16px;height:16px;fill:currentColor}
+      .rlx-widget.collapsed .rlx-toggle{transform:rotate(180deg)}
+      @media(max-width:768px){.rlx-widget{display:none}}
     </style>
 
-    <aside class="rlx-widget">
+    <aside class="rlx-widget" id="rlxWidget">
+      <!-- кнопка-стрелка -->
+      <button class="rlx-toggle" id="rlxToggle" aria-label="Свернуть / развернуть">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
       <div class="rlx-title">
-        <!-- локальная анимированная аватарка 120×120 -->
         <img src="icons/raidlynx.webp" alt="RaidLynx logo">
         <span>RaidLynx&nbsp;чат</span>
       </div>
@@ -145,12 +136,30 @@
         Вступайте к нам!
       </p>
 
-      <a class="rlx-join"
-         href="https://t.me/RaidLynx"
-         target="_blank" rel="noopener">
+      <a class="rlx-join" href="https://t.me/RaidLynx" target="_blank" rel="noopener">
         ВСТУПИТЬ В TELEGRAM
       </a>
     </aside>
+
+    <script>
+      (function(){  /* IIFE, чтобы не плодить глобалку */
+        const widget = document.getElementById('rlxWidget');
+        const btn    = document.getElementById('rlxToggle');
+        const KEY    = 'raidlynx_widget_state';       // localStorage ключ
+
+        /* применяем сохранённое состояние */
+        const saved = localStorage.getItem(KEY);
+        if (saved === 'collapsed') widget.classList.add('collapsed');
+
+        /* переключатель */
+        btn.addEventListener('click', () => {
+          widget.classList.toggle('collapsed');
+          localStorage.setItem(KEY,
+            widget.classList.contains('collapsed') ? 'collapsed' : 'expanded'
+          );
+        });
+      })();
+    </script>
     
         <h1 class="about-title"><span class='emoji'>🦊</span> О проекте RaidLynx</h1>
 
