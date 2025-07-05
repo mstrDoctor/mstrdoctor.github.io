@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="description" content="Выберите игру, чтобы скачать лучший русификатор. Переводы для самых популярных игр.">
-    <title>Список игр — Русификаторы RaidLynx</title>
+    <meta name="description" content="Переводы для игры Terra Invicta: скачать, отзывы, лайки.">
+    <title>Terra Invicta — Переводы | RaidLynx</title>
     <link rel="icon" href="icons/favicon.webp" type="image/webp">
 
     <!-- ✨ СТИЛИ ✨ -->
@@ -58,18 +58,53 @@
         
         
     <style>
-        .games-title{text-align:center;font-size:2.8rem;font-weight:800;margin-bottom:2.5rem;background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);-webkit-background-clip:text;color:transparent}
-        .games-search{max-width:440px;margin:0 auto 3rem;display:flex}
-        .games-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
-        .games-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
-        .games-search button:hover{background:#009cff}
-        .games-container{max-width:1000px;margin:0 auto;padding:0 32px 64px;display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-        .game-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:40px 24px;text-align:center;overflow:hidden;transition:transform .25s,box-shadow .25s}
-        .game-card h3{margin:0;font-size:1.2rem;font-weight:700;color:#fff}
-        .game-card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);opacity:0;transition:opacity .25s}
-        .game-card:hover::before{opacity:.35}
-        .game-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
-        .game-card a{position:relative;z-index:1;text-decoration:none;color:inherit;display:block;height:100%}
+        .game-title{
+            text-align:center;font-size:2.6rem;font-weight:800;margin-bottom:2rem;
+            background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);
+            -webkit-background-clip:text;color:transparent}
+
+        /* ─ поиск ─ */
+        .tr-search{max-width:450px;margin:0 auto 2.5rem;display:flex}
+        .tr-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;
+            border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
+        .tr-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;
+            background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+        .tr-search button:hover{background:#009cff}
+
+        /* ─ грид ─ */
+        .translations-grid{max-width:1000px;margin:0 auto;padding-bottom:64px;
+            display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+        /* ─ карточка ─ */
+        .tr-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);
+            border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:32px 24px;
+            overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+        .tr-card::before{content:'';position:absolute;inset:0;
+            background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);
+            opacity:0;transition:opacity .25s;pointer-events:none}         /* клики сквозь бликов */
+        .tr-card:hover::before{opacity:.35}
+        .tr-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+
+        /* ссылка-оверлей на ВСЮ карточку */
+        .tr-link{
+            position:absolute;inset:0;
+            z-index:5;                /* ← выше всего */
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        /* контент поверх, но кликов не ловит, кроме ссылки-оверлея */
+        .tr-card > :not(.tr-link){
+            position:relative;
+            z-index:4;
+            pointer-events:none;   /* текст не мешает */
+        }
+
+
+        /* заголовок, описание, статистика */
+        .tr-title{font-size:1.15rem;font-weight:700;color:#66ffff;margin-bottom:.6rem}
+        .tr-desc{font-size:.9rem;line-height:1.5;flex:1;color:#ddd}
+        .tr-stats{margin-top:1.2rem;font-size:.9rem;color:#aaa;font-weight:600}
     </style>
     
         
@@ -157,24 +192,60 @@
       })();
     </script>
     
-        <h1 class='games-title'>Список игр</h1>
-        <div class='games-search'>
-            <input id='gameSearch' type='text' placeholder='Поиск игры...' onkeyup='filterGames()'>
-            <button onclick='filterGames()'>🔍</button>
-        </div>
-        <div id='gamesContainer' class='games-container'>
-            <div class='game-card'><a href='hearts_of_iron_iv___hoi_4.html'><h3>Hearts of Iron IV
-| HOI 4</h3></a></div><div class='game-card'><a href='terra_invicta.html'><h3>Terra Invicta</h3></a></div>
+        <h1 class='game-title'>Terra Invicta</h1>
+
+        <div class='tr-search'>
+            <input id='trSearch' type='text' placeholder='Поиск перевода…' onkeyup='filterTranslations()'>
+            <button onclick='filterTranslations()'>🔍</button>
         </div>
 
-        <script>
-        function filterGames() {
-            const q = document.getElementById('gameSearch').value.toLowerCase();
-            document.querySelectorAll('#gamesContainer .game-card').forEach(c => {
-                c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
-            });
-        }
-        </script>
+        <div id='trGrid' class='translations-grid'>
+        <div class='tr-card' data-fileid='terra_ivicta_russian'>
+            <a class='tr-link' href='terra_ivicta_russian.html' aria-label='terra_ivicta_russian'></a>
+            <h3 class='tr-title'>terra_ivicta_russian</h3>
+            <div class='tr-desc'>🌍 Добро пожаловать, Командир!Вы готовы взять под свой контроль судьбу человечества в Terra Invicta? Эта глобальная стратегия требует вдумчивого планирования и глубокого погружения. Чтобы сделать ваш о…</div>
+            <div class='tr-stats'>
+                ⬇️ <span class='download-count'>0</span>
+                — ❤️ <span class='like-count'>0</span>
+                — 💬 <span class='comment-count'>0</span>
+            </div>
+        </div>
+        </div>
+        
+    <script>
+    const API_URL = 'https://modix-server.fly.dev';
+
+    /* фильтр по вводу */
+    function filterTranslations(){
+        const q = document.getElementById('trSearch').value.toLowerCase();
+        document.querySelectorAll('#trGrid .tr-card').forEach(card=>{
+            const txt = card.innerText.toLowerCase();
+            card.style.display = txt.includes(q) ? '' : 'none';
+        });
+    }
+
+    /* статистика и комментарии */
+    document.addEventListener('DOMContentLoaded',()=>{
+        document.querySelectorAll('.tr-card').forEach(card=>{
+            const id = card.dataset.fileid;
+            if(!id) return;
+
+            fetch(`${API_URL}/stats/${id}`)
+              .then(r=>r.json())
+              .then(d=>{
+                  card.querySelector('.download-count').innerText = d.downloads ?? 0;
+                  card.querySelector('.like-count').innerText     = d.likes     ?? 0;
+              }).catch(e=>console.error('stats',e));
+
+            fetch(`${API_URL}/comments/${id}`)
+              .then(r=>r.json())
+              .then(c=>{
+                  card.querySelector('.comment-count').innerText = c.length;
+              }).catch(e=>console.error('comments',e));
+        });
+    });
+    </script>
+    
     
     </div>
 
