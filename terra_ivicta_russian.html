@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="description" content="Выберите игру, чтобы скачать лучший русификатор. Переводы для самых популярных игр.">
-    <title>Список игр — Русификаторы RaidLynx</title>
+    <meta name="description" content="Перевод «terra_ivicta_russian» для Terra Invicta: скачать, подробности, комментарии игроков.">
+    <title>terra_ivicta_russian — Перевод для Terra Invicta | RaidLynx</title>
     <link rel="icon" href="icons/favicon.webp" type="image/webp">
 
     <!-- ✨ СТИЛИ ✨ -->
@@ -58,18 +58,29 @@
         
         
     <style>
-        .games-title{text-align:center;font-size:2.8rem;font-weight:800;margin-bottom:2.5rem;background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);-webkit-background-clip:text;color:transparent}
-        .games-search{max-width:440px;margin:0 auto 3rem;display:flex}
-        .games-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
-        .games-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
-        .games-search button:hover{background:#009cff}
-        .games-container{max-width:1000px;margin:0 auto;padding:0 32px 64px;display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-        .game-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:40px 24px;text-align:center;overflow:hidden;transition:transform .25s,box-shadow .25s}
-        .game-card h3{margin:0;font-size:1.2rem;font-weight:700;color:#fff}
-        .game-card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);opacity:0;transition:opacity .25s}
-        .game-card:hover::before{opacity:.35}
-        .game-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
-        .game-card a{position:relative;z-index:1;text-decoration:none;color:inherit;display:block;height:100%}
+        .translation-container{max-width:900px;margin:0 auto;padding:48px 32px;background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+        .translation-title{font-size:2.5rem;font-weight:800;text-align:center;margin-bottom:.4em;background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);-webkit-background-clip:text;color:transparent}
+        .game-name{text-align:center;font-size:1rem;color:#bbb;margin-bottom:1.5rem}
+        .version-block{text-align:center;color:#aaa;margin-bottom:1.5rem;font-size:.9rem}
+        .translation-description{line-height:1.6;margin-bottom:2rem}
+        .old-versions h3{margin:.5rem 0 1rem;font-size:1.1rem}
+        .old-versions ul{list-style:none;padding:0;margin:0;display:grid;row-gap:.4rem}
+        .old-version-desc{display:block;color:#777}
+        .action-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin:2rem 0}
+        .btn{padding:.75rem 1.5rem;border:none;border-radius:12px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+        .btn-download{background:#00c6ff;color:#000}
+        .btn-like{background:#ff5e99;color:#fff}
+        .btn:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+        .stats{color:#ccc;font-size:.9rem;align-self:center}
+        .separator{border:none;border-top:1px solid rgba(255,255,255,.15);margin:3rem 0}
+        .comment-section textarea,.comment-section input{width:100%;padding:.9rem 1.2rem;border-radius:12px;border:1px solid #333;background:#111;color:#eee;margin-bottom:1rem}
+        .comment-section textarea{min-height:110px;resize:vertical}
+        .comment-section button{background:#007bff;color:#fff;border:none;border-radius:12px;padding:.75rem 1.5rem;font-weight:600;cursor:pointer;transition:background .2s}
+        .comment-section button:hover:not(:disabled){background:#009cff}
+        .comment-section button:disabled{opacity:.4;cursor:not-allowed}
+        .back-link{text-align:center;margin-top:3rem}
+        .back-link a{color:#00faff;text-decoration:none;font-weight:600;transition:color .25s}
+        .back-link a:hover{color:#ffffff}
     </style>
     
         
@@ -157,24 +168,38 @@
       })();
     </script>
     
-        <h1 class='games-title'>Список игр</h1>
-        <div class='games-search'>
-            <input id='gameSearch' type='text' placeholder='Поиск игры...' onkeyup='filterGames()'>
-            <button onclick='filterGames()'>🔍</button>
-        </div>
-        <div id='gamesContainer' class='games-container'>
-            <div class='game-card'><a href='hearts_of_iron_iv___hoi_4.html'><h3>Hearts of Iron IV
-| HOI 4</h3></a></div><div class='game-card'><a href='terra_invicta.html'><h3>Terra Invicta</h3></a></div>
+        <div class='translation-container'>
+            <h1 class='translation-title'>terra_ivicta_russian</h1>
+            <p class='game-name'>Игра: <strong>Terra Invicta</strong></p>
+            <div class='version-block'><span><strong>Версия:</strong> 0.4.90</span> | <span><strong>Обновлено:</strong> 2025-07-06</span></div>
+
+            <div class='translation-description'>🌍 Добро пожаловать, Командир!Вы готовы взять под свой контроль судьбу человечества в Terra Invicta? Эта глобальная стратегия требует вдумчивого планирования и глубокого погружения. Чтобы сделать ваш опыт максимально комфортным и полным, мы подготовили качественный русификатор.Этот перевод позволит вам полностью сосредоточиться на стратегии, не отвлекаясь на языковой барьер. Управляйте тайной организацией, отражайте инопланетное вторжение и ведите человечество к победе — теперь на родном языке!<br><br>⚙️ Инструкция по установке (Steam)<br>Установка полностью ручная, подписка в Мастерской Steam не требуется.<br>Скачайте и распакуйте архив с русификатором.<br>Откройте папку с игрой в Steam (ПКМ на игре -> Управление -> Просмотреть локальные файлы).<br>Все файлы с расширением .rus из архива скопируйте в папку:<br>...\Terra Invicta\TerraInvicta_Data\StreamingAssets\Localization\rus\(Если папки rus нет, просто создайте её).<br>Файл TILocalizationTemplate.json из архива скопируйте в папку:<br>...\Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates\Обязательно подтвердите замену файла, когда система спросит.<br>Готово! Запускайте игру и выбирайте русский язык в настройках.<br><br>🚀 В бой! Удачи в освоении космоса и защите Земли!Присоединяйся к нашему сообществу, чтобы обсуждать игру и делиться своими успехами:</div>
+            
+
+            <div class='action-buttons'>
+                <button class='btn btn-download' onclick="downloadFile('terra_ivicta_russian','https://mega.co.nz/#!aRhQTLCb!O5HVhUPZCEkc8-fNgHl0aUNteKUvDIKZEd-P-J0HrKI')">⬇ Скачать</button>
+                <span id='download-count-terra_ivicta_russian' class='stats'>0 загрузок</span>
+
+                <button class='btn btn-like' onclick="likeFile('terra_ivicta_russian')">❤️ Лайк</button>
+                <span id='like-count-terra_ivicta_russian' class='stats'>0 лайков</span>
+            </div>
+
+            <hr class='separator'>
+
+            <div class='comment-section'>
+                <h2>Оставить комментарий</h2>
+                <input id='name-terra_ivicta_russian' placeholder='Ваше имя'>
+                <textarea id='text-terra_ivicta_russian' placeholder='Ваш комментарий'></textarea>
+                <button id='submit-button-terra_ivicta_russian' onclick="addComment('terra_ivicta_russian','name-terra_ivicta_russian','text-terra_ivicta_russian')" disabled>Отправить</button>
+
+                <div id='comments-terra_ivicta_russian' class='comments'></div>
+                <div id='comment-count-terra_ivicta_russian'>Комментарии: 0</div>
+            </div>
+
+            <p class='back-link'><a href='Terra_Invicta.html'>← Назад к игре</a></p>
         </div>
 
-        <script>
-        function filterGames() {
-            const q = document.getElementById('gameSearch').value.toLowerCase();
-            document.querySelectorAll('#gamesContainer .game-card').forEach(c => {
-                c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
-            });
-        }
-        </script>
+        <script src='scripts/interact.js'></script>
     
     </div>
 
