@@ -83,6 +83,11 @@
         .back-link{text-align:center;margin-top:3rem}
         .back-link a{color:#00faff;text-decoration:none;font-weight:600;transition:color .25s}
         .back-link a:hover{color:#ffffff}
+        .comment{background:rgba(255,255,255,.08);border-radius:12px;padding:1rem;margin-bottom:1rem}
+        .comment-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+        .comment-header strong{color:#00faff}
+        .comment-date{color:#888;font-size:.85rem}
+        .comment-text{line-height:1.5;color:#ddd}
     </style>
     
         
@@ -202,7 +207,7 @@
             <p class='back-link'><a href='hearts_of_iron_iv___hoi_4.html'>← Назад к игре</a></p>
         </div>
 
-        <script src='scripts/interact.js'></script>
+        <script type="module" src='scripts/interact.js'></script>
     
     </div>
 
@@ -222,6 +227,9 @@
           if (link) link.classList.add('active');
       })();
     </script>
+    
+    <!-- Уведомление о переезде сайта -->
+    <script src="scripts/migration-notice.js"></script>
 
 </body>
 </html>

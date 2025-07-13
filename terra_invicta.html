@@ -212,8 +212,13 @@
         </div>
         </div>
         
-    <script>
-    const API_URL = 'https://modix-server.fly.dev';
+    <script type="module">
+    import { firebaseConfig } from './scripts/firebase-config.js';
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getFirestore, doc, getDoc, collection, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
     /* фильтр по вводу */
     function filterTranslations(){
@@ -225,25 +230,39 @@
     }
 
     /* статистика и комментарии */
-    document.addEventListener('DOMContentLoaded',()=>{
-        document.querySelectorAll('.tr-card').forEach(card=>{
+    document.addEventListener('DOMContentLoaded', async ()=>{
+        const cards = document.querySelectorAll('.tr-card');
+        
+        for (const card of cards) {
             const id = card.dataset.fileid;
-            if(!id) return;
+            if (!id) continue;
 
-            fetch(`${API_URL}/stats/${id}`)
-              .then(r=>r.json())
-              .then(d=>{
-                  card.querySelector('.download-count').innerText = d.downloads ?? 0;
-                  card.querySelector('.like-count').innerText     = d.likes     ?? 0;
-              }).catch(e=>console.error('stats',e));
+            try {
+                // Загружаем статистику
+                const statsRef = doc(db, 'stats', id);
+                const statsDoc = await getDoc(statsRef);
+                
+                if (statsDoc.exists()) {
+                    const data = statsDoc.data();
+                    card.querySelector('.download-count').innerText = data.downloads || 0;
+                    card.querySelector('.like-count').innerText = data.likes || 0;
+                }
 
-            fetch(`${API_URL}/comments/${id}`)
-              .then(r=>r.json())
-              .then(c=>{
-                  card.querySelector('.comment-count').innerText = c.length;
-              }).catch(e=>console.error('comments',e));
-        });
+                // Загружаем комментарии
+                const commentsRef = collection(db, 'comments');
+                const commentsQuery = query(commentsRef, where('file_id', '==', id));
+                const commentsSnapshot = await getDocs(commentsQuery);
+                
+                card.querySelector('.comment-count').innerText = commentsSnapshot.size;
+                
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
     });
+
+    // Делаем функцию глобальной
+    window.filterTranslations = filterTranslations;
     </script>
     
     
@@ -265,6 +284,9 @@
           if (link) link.classList.add('active');
       })();
     </script>
+    
+    <!-- Уведомление о переезде сайта -->
+    <script src="scripts/migration-notice.js"></script>
 
 </body>
 </html>
