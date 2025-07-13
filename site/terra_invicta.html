@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="description" content="Контактная информация RaidLynx: пишите нам или заходите в соцсети.">
-    <title>Контакты — RaidLynx</title>
+    <meta name="description" content="Переводы для игры Terra Invicta: скачать, отзывы, лайки.">
+    <title>Terra Invicta — Переводы | RaidLynx</title>
     <link rel="icon" href="icons/favicon.webp" type="image/webp">
 
     <!-- ✨ СТИЛИ ✨ -->
@@ -58,22 +58,53 @@
         
         
     <style>
-        .contacts-title{
-            text-align:center;font-size:2.8rem;font-weight:800;margin-bottom:2rem;
+        .game-title{
+            text-align:center;font-size:2.6rem;font-weight:800;margin-bottom:2rem;
             background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);
             -webkit-background-clip:text;color:transparent}
-        .contacts-desc{max-width:700px;margin:0 auto 3rem;font-size:1.05rem;
-            line-height:1.6;text-align:center;color:#ddd}
-        .links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-            gap:32px;max-width:900px;margin:0 auto}
-        .link-card{display:flex;flex-direction:column;align-items:center;
-            background:rgba(255,255,255,.05);backdrop-filter:blur(16px);
+
+        /* ─ поиск ─ */
+        .tr-search{max-width:450px;margin:0 auto 2.5rem;display:flex}
+        .tr-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;
+            border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
+        .tr-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;
+            background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+        .tr-search button:hover{background:#009cff}
+
+        /* ─ грид ─ */
+        .translations-grid{max-width:1000px;margin:0 auto;padding-bottom:64px;
+            display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+        /* ─ карточка ─ */
+        .tr-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);
             border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:32px 24px;
-            transition:transform .25s,box-shadow .25s}
-        .link-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
-        .link-card img{width:60px;height:60px;margin-bottom:14px;transition:transform .25s}
-        .link-card:hover img{transform:scale(1.15)}
-        .link-card p{margin:0;color:#eee;font-size:.95rem;text-align:center}
+            overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+        .tr-card::before{content:'';position:absolute;inset:0;
+            background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);
+            opacity:0;transition:opacity .25s;pointer-events:none}         /* клики сквозь бликов */
+        .tr-card:hover::before{opacity:.35}
+        .tr-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+
+        /* ссылка-оверлей на ВСЮ карточку */
+        .tr-link{
+            position:absolute;inset:0;
+            z-index:5;                /* ← выше всего */
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        /* контент поверх, но кликов не ловит, кроме ссылки-оверлея */
+        .tr-card > :not(.tr-link){
+            position:relative;
+            z-index:4;
+            pointer-events:none;   /* текст не мешает */
+        }
+
+
+        /* заголовок, описание, статистика */
+        .tr-title{font-size:1.15rem;font-weight:700;color:#66ffff;margin-bottom:.6rem}
+        .tr-desc{font-size:.9rem;line-height:1.5;flex:1;color:#ddd}
+        .tr-stats{margin-top:1.2rem;font-size:.9rem;color:#aaa;font-weight:600}
     </style>
     
         
@@ -161,43 +192,79 @@
       })();
     </script>
     
-        <h1 class="contacts-title">Контакты</h1>
-        <p class="contacts-desc">Здесь вы найдёте ссылки на наши внешние ресурсы.<br><br>Если у вас есть предложения, идеи, вопросы или пожелания — пишите нам через удобную для вас платформу. Мы открыты к диалогу и всегда рады вашей обратной связи.<br><br>Спасибо, что поддерживаете проект RaidLynx!</p>
+        <h1 class='game-title'>Terra Invicta</h1>
 
-        <div class="links-grid">
-            
-        <a href="https://t.me/RaidLynx" class="link-card" target="_blank">
-            <img src="icons/telegram.png" alt="Наш телеграм.
-
-Основная ссылка для связи с нами. 
-Пишите свои предложения, следите за новостями.
-Пишите свои комментарии по улучшениям." />
-            <p>Наш телеграм.
-
-Основная ссылка для связи с нами. 
-Пишите свои предложения, следите за новостями.
-Пишите свои комментарии по улучшениям.</p>
-        </a>
-        
-        <a href="https://www.youtube.com/@mstrDoctor" class="link-card" target="_blank">
-            <img src="icons/youtube.png" alt="Наш ютуб.
-
-Здесь я выкладываю свою музыку.
-Буду рад вашей поддержке — подписке, лайку и комментарию.
-Спасибо, что слушаете!" />
-            <p>Наш ютуб.
-
-Здесь я выкладываю свою музыку.
-Буду рад вашей поддержке — подписке, лайку и комментарию.
-Спасибо, что слушаете!</p>
-        </a>
-        
-        <a href="@https://discord.gg/Veewpvq7HK" class="link-card" target="_blank">
-            <img src="icons/discord.png" alt="Это сердце нашего проекта! Здесь ты можешь напрямую пообщаться с командой и другими игроками, задать вопросы, предложить идеи и первым узнавать о всех обновлениях. Ждём тебя!" />
-            <p>Это сердце нашего проекта! Здесь ты можешь напрямую пообщаться с командой и другими игроками, задать вопросы, предложить идеи и первым узнавать о всех обновлениях. Ждём тебя!</p>
-        </a>
-        
+        <div class='tr-search'>
+            <input id='trSearch' type='text' placeholder='Поиск перевода…' onkeyup='filterTranslations()'>
+            <button onclick='filterTranslations()'>🔍</button>
         </div>
+
+        <div id='trGrid' class='translations-grid'>
+        <div class='tr-card' data-fileid='terra_ivicta_russian'>
+            <a class='tr-link' href='terra_ivicta_russian.html' aria-label='terra_ivicta_russian'></a>
+            <h3 class='tr-title'>terra_ivicta_russian</h3>
+            <div class='tr-desc'>🌍 Добро пожаловать, Командир!Вы готовы взять под свой контроль судьбу человечества в Terra Invicta? Эта глобальная стратегия требует вдумчивого планирования и глубокого погружения. Чтобы сделать ваш о…</div>
+            <div class='tr-stats'>
+                ⬇️ <span class='download-count'>0</span>
+                — ❤️ <span class='like-count'>0</span>
+                — 💬 <span class='comment-count'>0</span>
+            </div>
+        </div>
+        </div>
+        
+    <script type="module">
+    import { firebaseConfig } from './scripts/firebase-config.js';
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getFirestore, doc, getDoc, collection, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    /* фильтр по вводу */
+    function filterTranslations(){
+        const q = document.getElementById('trSearch').value.toLowerCase();
+        document.querySelectorAll('#trGrid .tr-card').forEach(card=>{
+            const txt = card.innerText.toLowerCase();
+            card.style.display = txt.includes(q) ? '' : 'none';
+        });
+    }
+
+    /* статистика и комментарии */
+    document.addEventListener('DOMContentLoaded', async ()=>{
+        const cards = document.querySelectorAll('.tr-card');
+        
+        for (const card of cards) {
+            const id = card.dataset.fileid;
+            if (!id) continue;
+
+            try {
+                // Загружаем статистику
+                const statsRef = doc(db, 'stats', id);
+                const statsDoc = await getDoc(statsRef);
+                
+                if (statsDoc.exists()) {
+                    const data = statsDoc.data();
+                    card.querySelector('.download-count').innerText = data.downloads || 0;
+                    card.querySelector('.like-count').innerText = data.likes || 0;
+                }
+
+                // Загружаем комментарии
+                const commentsRef = collection(db, 'comments');
+                const commentsQuery = query(commentsRef, where('file_id', '==', id));
+                const commentsSnapshot = await getDocs(commentsQuery);
+                
+                card.querySelector('.comment-count').innerText = commentsSnapshot.size;
+                
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
+    });
+
+    // Делаем функцию глобальной
+    window.filterTranslations = filterTranslations;
+    </script>
+    
     
     </div>
 

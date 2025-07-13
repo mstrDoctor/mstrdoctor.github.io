@@ -1,151 +1,308 @@
-
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hearts of Iron IV
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Переводы для игры Hearts of Iron IV
+| HOI 4: скачать, отзывы, лайки.">
+    <title>Hearts of Iron IV
 | HOI 4 — Переводы | RaidLynx</title>
-        <meta name="description" content="Переводы для игры Hearts of Iron IV
-| HOI 4. Скачать переводы, оставить комментарий или поставить лайк.">
-        <link rel="icon" href="icons/favicon.webp" type="image/webp">
-        <style>
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: url('tema.png') no-repeat center center fixed;
-                background-size: cover;
-                margin: 0;
-                padding: 0;
-                color: #fff;
-            }
-            a {
-                color: #66ffff;
-                text-decoration: none;
-            }
-            .navbar {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1000;
-            }
-            .navbar a {
-                color: white;
-                margin: 10px;
-                text-decoration: none;
-                padding: 6px 12px;
-                border-radius: 5px;
-                transition: 0.3s;
-            }
-            .navbar a:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-                color: #00ffff;
-            }
-            .content {
-                text-align: center;
-                margin-top: 120px;
-                padding: 30px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-                max-width: 900px;
-                margin-left: auto;
-                margin-right: auto;
-                font-size: 1.1em;
-                line-height: 1.7;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-                animation: fadeIn 0.7s ease;
-            }
-            h1 {
-                text-align: center;
-                margin-bottom: 25px;
-                font-size: 2em;
-            }
-            .translation-card {
-                transition: transform 0.3s;
-            }
-            .translation-card:hover {
-                transform: scale(1.05);
-            }
-            footer {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                font-size: 14px;
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-            }
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="navbar">
-            <a href="index.html">Главная</a>
-            <a href="games.html">Игры</a>
-            <a href="about.html">О проекте</a>
-            <a href="contacts.html">Контакты</a>
+    <link rel="icon" href="icons/favicon.webp" type="image/webp">
+
+    <!-- ✨ СТИЛИ ✨ -->
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;color:#fff;font-family:'Segoe UI',sans-serif;
+             background:url('tema.png') no-repeat center/cover fixed}
+        a{color:inherit;text-decoration:none}
+
+        /* ───────── ВЕРХНИЙ NAVBAR ───────── */
+        .navbar-top{
+            position:fixed;top:0;left:0;width:100%;z-index:1000;
+            padding:14px 24px;display:flex;justify-content:center;gap:26px;
+            background:linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+            backdrop-filter:blur(6px);box-shadow:0 4px 10px rgba(0,0,0,.5)
+        }
+        .navbar-top a{padding:8px 14px;border-radius:6px;font-weight:600;
+                       color:#ffffffd9;transition:background .25s,transform .25s}
+        .navbar-top a:hover{background:rgba(255,255,255,.18);transform:scale(1.06);color:#fff}
+        .navbar-top a.active{background:#00bcd4;color:#000}
+
+        /* ───────── ОСНОВНОЙ КОНТЕНТ ───────── */
+        .content{
+            margin:100px auto 80px;          /* снизу стало меньше — нет нижнего navbar */
+            max-width:880px;padding:28px 24px;border-radius:12px;text-align:center;
+            background:rgba(0,0,0,.68);box-shadow:0 4px 12px rgba(0,0,0,.55)
+        }
+
+        /* ───────── FOOTER ───────── */
+        footer{margin:40px 0 20px;text-align:center;font-size:14px;opacity:.85}
+        footer small{display:block;margin-top:4px;font-size:13px;color:#ccc}
+
+        /* ───────── АДАПТИВ ───────── */
+        @media(max-width:768px){
+            .navbar-top{flex-wrap:wrap;gap:12px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНИЙ NAVBAR -->
+    <nav class="navbar-top">
+        <a href="index.html"    id="link-index">Главная</a>
+        <a href="games.html"    id="link-games">Игры</a>
+        <a href="about.html"    id="link-about">О&nbsp;проекте</a>
+        <a href="contacts.html" id="link-contacts">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        
+        
+    <style>
+        .game-title{
+            text-align:center;font-size:2.6rem;font-weight:800;margin-bottom:2rem;
+            background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);
+            -webkit-background-clip:text;color:transparent}
+
+        /* ─ поиск ─ */
+        .tr-search{max-width:450px;margin:0 auto 2.5rem;display:flex}
+        .tr-search input{flex:1;padding:.85rem 1.2rem;border-radius:18px 0 0 18px;
+            border:1px solid #333;background:#111;color:#eee;font-size:.95rem}
+        .tr-search button{padding:.85rem 1.2rem;border:none;border-radius:0 18px 18px 0;
+            background:#007bff;color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+        .tr-search button:hover{background:#009cff}
+
+        /* ─ грид ─ */
+        .translations-grid{max-width:1000px;margin:0 auto;padding-bottom:64px;
+            display:grid;gap:32px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+        /* ─ карточка ─ */
+        .tr-card{position:relative;background:rgba(255,255,255,.05);backdrop-filter:blur(14px);
+            border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:32px 24px;
+            overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+        .tr-card::before{content:'';position:absolute;inset:0;
+            background:linear-gradient(120deg,#00f0ff55 0%,#ff00f055 100%);
+            opacity:0;transition:opacity .25s;pointer-events:none}         /* клики сквозь бликов */
+        .tr-card:hover::before{opacity:.35}
+        .tr-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+
+        /* ссылка-оверлей на ВСЮ карточку */
+        .tr-link{
+            position:absolute;inset:0;
+            z-index:5;                /* ← выше всего */
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        /* контент поверх, но кликов не ловит, кроме ссылки-оверлея */
+        .tr-card > :not(.tr-link){
+            position:relative;
+            z-index:4;
+            pointer-events:none;   /* текст не мешает */
+        }
+
+
+        /* заголовок, описание, статистика */
+        .tr-title{font-size:1.15rem;font-weight:700;color:#66ffff;margin-bottom:.6rem}
+        .tr-desc{font-size:.9rem;line-height:1.5;flex:1;color:#ddd}
+        .tr-stats{margin-top:1.2rem;font-size:.9rem;color:#aaa;font-weight:600}
+    </style>
+    
+        
+    <style>
+      /* ───── БАЗОВЫЙ ВИДЖЕТ ───── */
+      .rlx-widget{
+          position:fixed;right:0;top:50%;transform:translateY(-50%);
+          width:320px;max-width:90vw;padding:24px 20px 28px;
+          border-radius:18px;background:#1b1b1f;
+          box-shadow:0 6px 30px rgba(0,0,0,.35);z-index:1000;
+          transition:width .35s ease, padding .35s ease;
+      }
+      /* состояние “свернут” */
+      .rlx-widget.collapsed{
+          width:56px;padding:12px 8px;overflow:hidden;
+      }
+
+      /* ───── ЗАГОЛОВОК ───── */
+      .rlx-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+      .rlx-title img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+      .rlx-title span{font-weight:700;font-size:1.1rem;color:#fff}
+      .rlx-widget.collapsed .rlx-title span{display:none}
+
+      /* ───── ТЕКСТ и КНОПКА ───── */
+      .rlx-desc{font-size:.88rem;line-height:1.4;margin-bottom:20px;color:#bbb}
+      .rlx-widget.collapsed .rlx-desc,
+      .rlx-widget.collapsed .rlx-join{display:none}
+
+      .rlx-join{display:block;text-align:center;font-weight:600;font-size:1rem;
+                background:#2a6be6;color:#fff;padding:12px 0;border-radius:10px;
+                text-decoration:none;transition:.2s;
+                box-shadow:0 3px 6px rgba(42,107,230,.4)}
+      .rlx-join:hover{filter:brightness(1.1)}
+
+      /* ───── КНОПКА-СТРЕЛКА ───── */
+      .rlx-toggle{
+          position:absolute;top:6px;right:6px;width:28px;height:28px;
+          background:#2a6be6;border:none;border-radius:50%;cursor:pointer;
+          display:flex;align-items:center;justify-content:center;
+          padding:0;transition:transform .35s;color:#fff;
+      }
+      .rlx-toggle svg{width:16px;height:16px;fill:currentColor}
+      .rlx-widget.collapsed .rlx-toggle{transform:rotate(180deg)}
+      @media(max-width:768px){.rlx-widget{display:none}}
+    </style>
+
+    <aside class="rlx-widget" id="rlxWidget">
+      <!-- кнопка-стрелка -->
+      <button class="rlx-toggle" id="rlxToggle" aria-label="Свернуть / развернуть">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="rlx-title">
+        <img src="icons/raidlynx.webp" alt="RaidLynx logo">
+        <span>RaidLynx&nbsp;чат</span>
+      </div>
+
+      <p class="rlx-desc">
+        Обсуждаем переводы, моддинг, делимся новостями.<br>
+        Вступайте к нам!
+      </p>
+
+      <a class="rlx-join" href="https://t.me/RaidLynx" target="_blank" rel="noopener">
+        ВСТУПИТЬ В TELEGRAM
+      </a>
+    </aside>
+
+    <script>
+      (function(){  /* IIFE, чтобы не плодить глобалку */
+        const widget = document.getElementById('rlxWidget');
+        const btn    = document.getElementById('rlxToggle');
+        const KEY    = 'raidlynx_widget_state';       // localStorage ключ
+
+        /* применяем сохранённое состояние */
+        const saved = localStorage.getItem(KEY);
+        if (saved === 'collapsed') widget.classList.add('collapsed');
+
+        /* переключатель */
+        btn.addEventListener('click', () => {
+          widget.classList.toggle('collapsed');
+          localStorage.setItem(KEY,
+            widget.classList.contains('collapsed') ? 'collapsed' : 'expanded'
+          );
+        });
+      })();
+    </script>
+    
+        <h1 class='game-title'>Hearts of Iron IV
+| HOI 4</h1>
+
+        <div class='tr-search'>
+            <input id='trSearch' type='text' placeholder='Поиск перевода…' onkeyup='filterTranslations()'>
+            <button onclick='filterTranslations()'>🔍</button>
         </div>
 
-        <div class="content">
-            <h1>Hearts of Iron IV
-| HOI 4</h1>
-            
-        <div class="translation-card" data-fileid="hearts_of_azeroth_hoi4_ru_v1_0" style="border:1px solid #ccc;padding:10px;margin-bottom:10px;background: rgba(0, 0, 0, 0.6); border-radius: 8px; text-align: left; transition: transform 0.3s;">
-            <h3><a href="hearts_of_azeroth_hoi4_ru_v1_0.html" style="color:#66ffff; text-decoration: none; font-size: 1.2em;">Hearts_of_Azeroth_HOI4_Ru_v1.0</a></h3>
-            <div style="font-size: 0.95em; line-height: 1.5; max-height: 6em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                Полный перевод глобального мода Hearts of Azeroth (A Warcraft Total Overhaul) для Hearts of Iron IV.
-Мод переносит события культовой вселенной Warcraft в механику HoI4 — и теперь всё это доступно на р...
+        <div id='trGrid' class='translations-grid'>
+        <div class='tr-card' data-fileid='hearts_of_azeroth_hoi4_ru'>
+            <a class='tr-link' href='hearts_of_azeroth_hoi4_ru.html' aria-label='hearts_of_azeroth_hoi4_ru'></a>
+            <h3 class='tr-title'>hearts_of_azeroth_hoi4_ru</h3>
+            <div class='tr-desc'>Hearts of Azeroth — Полный перевод на русский язык! ⚔️
+Погрузитесь во вселенную Warcraft, какой вы её ещё не видели! 🌍 Глобальный мод Hearts of Azeroth переносит эпические конфликты и политические инт…</div>
+            <div class='tr-stats'>
+                ⬇️ <span class='download-count'>0</span>
+                — ❤️ <span class='like-count'>0</span>
+                — 💬 <span class='comment-count'>0</span>
             </div>
-            <p style="margin-top:10px; font-weight: bold; color: #aaa;">
-                ⬇️ <span class="download-count">0 загрузок</span> — 
-                ❤️ <span class="like-count">0 лайков</span> — 
-                💬 <span class="comment-count">0 комментариев</span>
-            </p>
         </div>
         
+        <div class='tr-card' data-fileid='end_of_a_new_beginning_ru'>
+            <a class='tr-link' href='end_of_a_new_beginning_ru.html' aria-label='End_of_a_New_Beginning_ru'></a>
+            <h3 class='tr-title'>End_of_a_New_Beginning_ru</h3>
+            <div class='tr-desc'>End of a New Beginning — Глобальный перевод на русский 🌍
+Откройте для себя «End of a New Beginning» — эпохальную сагу, охватывающую целое столетие перемен. Начните свой путь в 1857 году, в разгар инду…</div>
+            <div class='tr-stats'>
+                ⬇️ <span class='download-count'>0</span>
+                — ❤️ <span class='like-count'>0</span>
+                — 💬 <span class='comment-count'>0</span>
+            </div>
         </div>
+        </div>
+        
+    <script type="module">
+    import { firebaseConfig } from './scripts/firebase-config.js';
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getFirestore, doc, getDoc, collection, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-        <footer>
-            <p>&copy; 2025 RaidLynx. Все права защищены.</p>
-        </footer>
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-        <script>
-        const API_URL = "https://modix-server.fly.dev";
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll(".translation-card");
-
-            cards.forEach(card => {
-                const fileId = card.dataset.fileid;
-                if (!fileId) return;
-
-                fetch(`${API_URL}/stats/${fileId}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        card.querySelector(".download-count").innerText = `${data.downloads || 0} загрузок`;
-                        card.querySelector(".like-count").innerText = `❤️ ${data.likes || 0} лайков`;
-                    })
-                    .catch(err => console.error("Ошибка загрузки статистики:", err));
-
-                fetch(`${API_URL}/comments/${fileId}`)
-                    .then(res => res.json())
-                    .then(comments => {
-                        card.querySelector(".comment-count").innerText = `${comments.length} комментариев`;
-                    })
-                    .catch(err => console.error("Ошибка загрузки комментариев:", err));
-            });
+    /* фильтр по вводу */
+    function filterTranslations(){
+        const q = document.getElementById('trSearch').value.toLowerCase();
+        document.querySelectorAll('#trGrid .tr-card').forEach(card=>{
+            const txt = card.innerText.toLowerCase();
+            card.style.display = txt.includes(q) ? '' : 'none';
         });
-        </script>
-    </body>
-    </html>
+    }
+
+    /* статистика и комментарии */
+    document.addEventListener('DOMContentLoaded', async ()=>{
+        const cards = document.querySelectorAll('.tr-card');
+        
+        for (const card of cards) {
+            const id = card.dataset.fileid;
+            if (!id) continue;
+
+            try {
+                // Загружаем статистику
+                const statsRef = doc(db, 'stats', id);
+                const statsDoc = await getDoc(statsRef);
+                
+                if (statsDoc.exists()) {
+                    const data = statsDoc.data();
+                    card.querySelector('.download-count').innerText = data.downloads || 0;
+                    card.querySelector('.like-count').innerText = data.likes || 0;
+                }
+
+                // Загружаем комментарии
+                const commentsRef = collection(db, 'comments');
+                const commentsQuery = query(commentsRef, where('file_id', '==', id));
+                const commentsSnapshot = await getDocs(commentsQuery);
+                
+                card.querySelector('.comment-count').innerText = commentsSnapshot.size;
+                
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
+    });
+
+    // Делаем функцию глобальной
+    window.filterTranslations = filterTranslations;
+    </script>
     
+    
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        🦊 RaidLynx. Все права защищены.
+        <small>Лучшие русификации — специально для вас!</small>
+    </footer>
+
+    <!-- ───────── СКРИПТ ───────── -->
+    <script>
+      /* Подсветка активной вкладки */
+      (() => {
+          const page = (location.pathname.split('/').pop() || 'index.html')
+                       .replace('.html','');
+          const link = document.getElementById('link-' + page);
+          if (link) link.classList.add('active');
+      })();
+    </script>
+    
+    <!-- Уведомление о переезде сайта -->
+    <script src="scripts/migration-notice.js"></script>
+
+</body>
+</html>

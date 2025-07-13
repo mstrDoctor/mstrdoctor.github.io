@@ -1,95 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="RaidLynx — русификаторы и модификации к играм.">
+    <title>Добро пожаловать в 🦊 RaidLynx</title>
+    <link rel="icon" href="icons/favicon.webp" type="image/webp">
 
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Описание сайта">
-        <meta name="yandex-verification" content="70562a0e4bbf977e" />
-        <title>Главная</title>
-        <link rel="icon" href="icons/favicon.webp" type="image/webp">
-        <style>
-            body {
-                font-family: sans-serif;
-                background: url('tema.png') no-repeat center center fixed;
-                background-size: cover;
-                margin: 0;
-                padding: 0;
-                color: #fff;
-            }
-            a {
-                color: #aaffff;
-                text-decoration: none;
-            }
-            .navbar {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1000;
-            }
-            .navbar a {
-                color: white;
-                margin: 10px;
-                text-decoration: none;
-            }
-            .navbar a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-            .content {
-                text-align: center;
-                margin-top: 100px;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            }
-            footer {
-                background-color: rgba(0, 0, 0, 0.7);
-                padding: 10px;
-                text-align: center;
-                font-size: 14px;
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="navbar">
-            <a href="index.html">Главная</a>
-            <a href="games.html">Игры</a>
-            <a href="about.html">О проекте</a>
-            <a href="contacts.html">Контакты</a>
-        </div>
+    <!-- ✨ СТИЛИ ✨ -->
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;color:#fff;font-family:'Segoe UI',sans-serif;
+             background:url('tema.png') no-repeat center/cover fixed}
+        a{color:inherit;text-decoration:none}
 
-        <div class="content">
-            
-        <div class="content" style="text-align: center;">
-            <h1 style="font-size: 2.5em; margin-bottom: 10px;">Добро пожаловать в 🦊 RaidLynx</h1>
-            <h2 style="font-weight: normal; font-size: 1.4em; color: #ccc; margin-bottom: 30px;">Портал русификаторов и локализаций для игр!</h2>
+        /* ───────── ВЕРХНИЙ NAVBAR ───────── */
+        .navbar-top{
+            position:fixed;top:0;left:0;width:100%;z-index:1000;
+            padding:14px 24px;display:flex;justify-content:center;gap:26px;
+            background:linear-gradient(135deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+            backdrop-filter:blur(6px);box-shadow:0 4px 10px rgba(0,0,0,.5)
+        }
+        .navbar-top a{padding:8px 14px;border-radius:6px;font-weight:600;
+                       color:#ffffffd9;transition:background .25s,transform .25s}
+        .navbar-top a:hover{background:rgba(255,255,255,.18);transform:scale(1.06);color:#fff}
+        .navbar-top a.active{background:#00bcd4;color:#000}
 
-            <div style="margin: 0 auto; max-width: 800px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; line-height: 1.6; font-size: 1.05em; text-align: left;">
-                Здесь ты найдёшь 🔥 лучшие переводы для топовых игр и модов, сделанные игроками — для игроков.<br>🎯 Не нашёл нужный перевод? Не беда — просто напиши нам через [Контакты] — и, возможно, мы сделаем его специально для тебя.<br><br>⚙️ Как работают переводы?<br>Все переводы создаются с помощью машинного интеллекта 🤖, но мы вручную шлифуем текст, чтобы он звучал понятно и приятно.<br>Иногда возможны небольшие ляпы — но не переживай, мы их быстро фиксируем по фидбеку.<br><br>💬 Нам важно твоё мнение!<br>Пиши, комментируй, лайкай ❤️ — твоя обратная связь помогает нам расти и делать переводы ещё круче 👌.<br>Ты — часть команды 🫶<br><br>⛵ Залетай, качай и играй по-русски вместе с RaidLynx.<br>Добро пожаловать в стаю 🌌
-            </div>
+        /* ───────── ОСНОВНОЙ КОНТЕНТ ───────── */
+        .content{
+            margin:100px auto 80px;          /* снизу стало меньше — нет нижнего navbar */
+            max-width:880px;padding:28px 24px;border-radius:12px;text-align:center;
+            background:rgba(0,0,0,.68);box-shadow:0 4px 12px rgba(0,0,0,.55)
+        }
 
-            <hr style="margin: 40px auto; width: 60%; border-color: rgba(255,255,255,0.1);">
+        /* ───────── FOOTER ───────── */
+        footer{margin:40px 0 20px;text-align:center;font-size:14px;opacity:.85}
+        footer small{display:block;margin-top:4px;font-size:13px;color:#ccc}
 
-            <a href="games.html" style="display: inline-block; margin-top: 20px; font-size: 1.2em; color: #00ffff; text-decoration: none; border: 1px solid #00ffff; padding: 10px 20px; border-radius: 8px; transition: all 0.3s;">
-                Перейти к списку игр →
-            </a>
+        /* ───────── АДАПТИВ ───────── */
+        @media(max-width:768px){
+            .navbar-top{flex-wrap:wrap;gap:12px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНИЙ NAVBAR -->
+    <nav class="navbar-top">
+        <a href="index.html"    id="link-index">Главная</a>
+        <a href="games.html"    id="link-games">Игры</a>
+        <a href="about.html"    id="link-about">О&nbsp;проекте</a>
+        <a href="contacts.html" id="link-contacts">Контакты</a>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="content">
+        
+        
+    <style>
+        .index-wrapper{
+            max-width:900px;margin:0 auto;padding:64px 32px;text-align:center}
+        .index-title{
+            font-size:2.8rem;font-weight:800;margin-bottom:.4em;
+            background:linear-gradient(90deg,#00f0ff 0%,#ff00f0 100%);
+            -webkit-background-clip:text;color:transparent}
+        /* эмодзи остаются нативного цвета */
+        .index-title .emoji{
+            background:none!important;
+            -webkit-background-clip:initial!important;
+            color:initial!important;
+            -webkit-text-fill-color:initial!important}
+        .index-subtitle{
+            font-size:1.3rem;color:#bbb;margin-bottom:2.5rem}
+        .index-body{
+            background:rgba(255,255,255,.05);backdrop-filter:blur(16px);
+            border:1px solid rgba(255,255,255,.12);border-radius:24px;
+            padding:32px;line-height:1.6;text-align:left;font-size:1.05rem;
+            margin-bottom:3rem}
+        .index-btn{
+            display:inline-block;padding:.85rem 2.2rem;border-radius:18px;
+            border:1px solid #00f0ff;color:#00f0ff;text-decoration:none;
+            font-weight:700;transition:background .25s,color .25s}
+        .index-btn:hover{background:#00f0ff;color:#000}
+    </style>
+    
+        
+    <style>
+      /* ───── БАЗОВЫЙ ВИДЖЕТ ───── */
+      .rlx-widget{
+          position:fixed;right:0;top:50%;transform:translateY(-50%);
+          width:320px;max-width:90vw;padding:24px 20px 28px;
+          border-radius:18px;background:#1b1b1f;
+          box-shadow:0 6px 30px rgba(0,0,0,.35);z-index:1000;
+          transition:width .35s ease, padding .35s ease;
+      }
+      /* состояние “свернут” */
+      .rlx-widget.collapsed{
+          width:56px;padding:12px 8px;overflow:hidden;
+      }
+
+      /* ───── ЗАГОЛОВОК ───── */
+      .rlx-title{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+      .rlx-title img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+      .rlx-title span{font-weight:700;font-size:1.1rem;color:#fff}
+      .rlx-widget.collapsed .rlx-title span{display:none}
+
+      /* ───── ТЕКСТ и КНОПКА ───── */
+      .rlx-desc{font-size:.88rem;line-height:1.4;margin-bottom:20px;color:#bbb}
+      .rlx-widget.collapsed .rlx-desc,
+      .rlx-widget.collapsed .rlx-join{display:none}
+
+      .rlx-join{display:block;text-align:center;font-weight:600;font-size:1rem;
+                background:#2a6be6;color:#fff;padding:12px 0;border-radius:10px;
+                text-decoration:none;transition:.2s;
+                box-shadow:0 3px 6px rgba(42,107,230,.4)}
+      .rlx-join:hover{filter:brightness(1.1)}
+
+      /* ───── КНОПКА-СТРЕЛКА ───── */
+      .rlx-toggle{
+          position:absolute;top:6px;right:6px;width:28px;height:28px;
+          background:#2a6be6;border:none;border-radius:50%;cursor:pointer;
+          display:flex;align-items:center;justify-content:center;
+          padding:0;transition:transform .35s;color:#fff;
+      }
+      .rlx-toggle svg{width:16px;height:16px;fill:currentColor}
+      .rlx-widget.collapsed .rlx-toggle{transform:rotate(180deg)}
+      @media(max-width:768px){.rlx-widget{display:none}}
+    </style>
+
+    <aside class="rlx-widget" id="rlxWidget">
+      <!-- кнопка-стрелка -->
+      <button class="rlx-toggle" id="rlxToggle" aria-label="Свернуть / развернуть">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="rlx-title">
+        <img src="icons/raidlynx.webp" alt="RaidLynx logo">
+        <span>RaidLynx&nbsp;чат</span>
+      </div>
+
+      <p class="rlx-desc">
+        Обсуждаем переводы, моддинг, делимся новостями.<br>
+        Вступайте к нам!
+      </p>
+
+      <a class="rlx-join" href="https://t.me/RaidLynx" target="_blank" rel="noopener">
+        ВСТУПИТЬ В TELEGRAM
+      </a>
+    </aside>
+
+    <script>
+      (function(){  /* IIFE, чтобы не плодить глобалку */
+        const widget = document.getElementById('rlxWidget');
+        const btn    = document.getElementById('rlxToggle');
+        const KEY    = 'raidlynx_widget_state';       // localStorage ключ
+
+        /* применяем сохранённое состояние */
+        const saved = localStorage.getItem(KEY);
+        if (saved === 'collapsed') widget.classList.add('collapsed');
+
+        /* переключатель */
+        btn.addEventListener('click', () => {
+          widget.classList.toggle('collapsed');
+          localStorage.setItem(KEY,
+            widget.classList.contains('collapsed') ? 'collapsed' : 'expanded'
+          );
+        });
+      })();
+    </script>
+    
+        <div class='index-wrapper'>
+            <h1 class='index-title'>Добро пожаловать в <span class='emoji'>🦊</span> RaidLynx</h1>
+            <p class='index-subtitle'>Портал русификаторов и локализаций для игр!</p>
+            <div class='index-body'>Здесь ты найдёшь 🔥 лучшие переводы для топовых игр и модов, сделанные игроками — для игроков.<br>🎯 Не нашёл нужный перевод? Не беда — просто напиши нам через [Контакты] — и, возможно, мы сделаем его специально для тебя.<br><br>⚙️ Как работают переводы?<br>Все переводы создаются с помощью машинного интеллекта 🤖, но мы вручную шлифуем текст, чтобы он звучал понятно и приятно.<br>Иногда возможны небольшие ляпы — но не переживай, мы их быстро фиксируем по фидбеку.<br><br>💬 Нам важно твоё мнение!<br>Пиши, комментируй, лайкай ❤️ — твоя обратная связь помогает нам расти и делать переводы ещё круче 👌.<br>Ты — часть команды 🫶<br><br>⛵ Залетай, качай и играй по-русски вместе с RaidLynx.<br>Добро пожаловать в стаю 🌌</div>
+            <a href='games.html' class='index-btn'>Перейти к списку игр →</a>
         </div>
     
-        </div>
+    </div>
 
-        <footer>
-            <p>&copy; 2025 RaidLynx. Все права защищены.</p>
-        </footer>
-    </body>
-    </html>
+    <!-- FOOTER -->
+    <footer>
+        🦊 RaidLynx. Все права защищены.
+        <small>Лучшие русификации — специально для вас!</small>
+    </footer>
+
+    <!-- ───────── СКРИПТ ───────── -->
+    <script>
+      /* Подсветка активной вкладки */
+      (() => {
+          const page = (location.pathname.split('/').pop() || 'index.html')
+                       .replace('.html','');
+          const link = document.getElementById('link-' + page);
+          if (link) link.classList.add('active');
+      })();
+    </script>
     
+    <!-- Уведомление о переезде сайта -->
+    <script src="scripts/migration-notice.js"></script>
+
+</body>
+</html>
